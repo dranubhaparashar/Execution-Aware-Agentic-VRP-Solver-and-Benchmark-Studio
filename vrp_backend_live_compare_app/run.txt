@@ -1,0 +1,8 @@
+conda activate vrp2
+cd "/mnt/c/Users/AnubhaAnubha/OneDrive - Pearce Services, LLC/onedrive_ubuntu/project/exec_aware_arcgis_vrp_poc_all_scenarios"
+cd vrp_backend_live_compare_app
+cp app_dropin.py app.py
+cp compare_backends_dropin.py compare_backends.py
+cp requirements_dropin.txt requirements.txt
+streamlit cache clear
+streamlit run app.py --server.port 8504

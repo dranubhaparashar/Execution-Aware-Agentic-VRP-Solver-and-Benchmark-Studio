@@ -1,0 +1,13 @@
+streamlit>=1.37
+pandas>=2.1
+numpy<2
+plotly>=5.20
+folium>=0.16
+streamlit-folium>=0.22
+openpyxl>=3.1
+nbformat>=5.10
+requests>=2.32
+pyvrp>=0.13
+ortools>=9.10
+# Optional for live Esri backend:
+# arcgis>=2.4
