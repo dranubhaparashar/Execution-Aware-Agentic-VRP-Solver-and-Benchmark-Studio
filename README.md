@@ -6,7 +6,6 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-red?logo=streamlit)](https://streamlit.io)
 [![OR-Tools](https://img.shields.io/badge/OR--Tools-9.x-green)](https://developers.google.com/optimization)
 [![Gemini](https://img.shields.io/badge/Gemini-2.0_Flash-blue)](https://aistudio.google.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 ---
 
