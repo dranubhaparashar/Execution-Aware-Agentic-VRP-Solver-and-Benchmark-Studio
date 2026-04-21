@@ -1,0 +1,24 @@
+{
+  "subset_orders": 150,
+  "subset_routes": 50,
+  "full_orders": 40000,
+  "full_routes": 400,
+  "depot_focus": "Depot_Richardson",
+  "fast_mode": true,
+  "random_seed": 42,
+  "speed_kmph": 30.0,
+  "use_agents": true,
+  "use_two_opt": true,
+  "strict_skill_bias": true,
+  "intake_summary": {
+    "orders": 40000,
+    "routes": 400,
+    "depots": 8,
+    "accounts": 120
+  },
+  "backend": "Impacted-Subset Greedy + 2-opt",
+  "artifact_dir": "/mnt/c/Users/AnubhaAnubha/OneDrive - Pearce Services, LLC/onedrive_ubuntu/project/exec_aware_arcgis_vrp_poc_all_scenarios/notebook_artifacts/Impacted-Subset_Greedy_2-opt",
+  "saved_workbook": "/mnt/c/Users/AnubhaAnubha/OneDrive - Pearce Services, LLC/onedrive_ubuntu/project/exec_aware_arcgis_vrp_poc_all_scenarios/notebook_artifacts/Impacted-Subset_Greedy_2-opt/vrp_scenario_results_full.xlsx",
+  "maps_html_dir": "/mnt/c/Users/AnubhaAnubha/OneDrive - Pearce Services, LLC/onedrive_ubuntu/project/exec_aware_arcgis_vrp_poc_all_scenarios/notebook_artifacts/Impacted-Subset_Greedy_2-opt/maps_html",
+  "maps_png_dir": "/mnt/c/Users/AnubhaAnubha/OneDrive - Pearce Services, LLC/onedrive_ubuntu/project/exec_aware_arcgis_vrp_poc_all_scenarios/notebook_artifacts/Impacted-Subset_Greedy_2-opt/maps_png"
+}
