@@ -1,0 +1,5 @@
+GoalProfile,minimize_travel_time,prefer_higher_rated_technicians,maximize_sla_adherence,reduce_overtime
+TRAVEL_FIRST,1.0,0.3,0.5,0.6
+SLA_FIRST,0.5,0.5,1.0,0.4
+SKILL_FIRST,0.4,1.0,0.7,0.4
+OVERTIME_FIRST,0.5,0.4,0.5,1.0

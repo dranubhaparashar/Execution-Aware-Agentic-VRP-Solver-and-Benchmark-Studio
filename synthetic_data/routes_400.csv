@@ -1,0 +1,401 @@
+ObjectID,Name,StartDepotName,EndDepotName,EarliestStartTime,LatestStartTime,Capacities,CostPerUnitTime,CostPerUnitDistance,CostPerUnitOvertime,OvertimeStartTime,MaxOrderCount,MaxTotalTime,AssignmentRule,SpecialtyNames,Description,TechnicianRating,Team
+1,Technician001,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,4.52,Richardson
+2,Technician002,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,3.95,Dallas_North
+3,Technician003,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,4.66,Las_Colinas
+4,Technician004,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,4.39,Plano
+5,Technician005,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,3.36,Frisco
+6,Technician006,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,4.86,Arlington
+7,Technician007,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,4.49,Garland
+8,Technician008,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,4.54,McKinney
+9,Technician009,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,3.42,Richardson
+10,Technician010,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,3.97,Dallas_North
+11,Technician011,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,3.83,Las_Colinas
+12,Technician012,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,4.78,Plano
+13,Technician013,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,4.29,Frisco
+14,Technician014,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,4.6,Arlington
+15,Technician015,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,3.95,Garland
+16,Technician016,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,3.59,McKinney
+17,Technician017,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,4.14,Richardson
+18,Technician018,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,3.31,Dallas_North
+19,Technician019,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,4.61,Las_Colinas
+20,Technician020,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,4.27,Plano
+21,Technician021,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,4.49,Frisco
+22,Technician022,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,3.8,Arlington
+23,Technician023,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,4.85,Garland
+24,Technician024,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,4.72,McKinney
+25,Technician025,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,4.52,Richardson
+26,Technician026,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,3.53,Dallas_North
+27,Technician027,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,3.99,Las_Colinas
+28,Technician028,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,3.27,Plano
+29,Technician029,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,3.46,Frisco
+30,Technician030,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,4.36,Arlington
+31,Technician031,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,4.47,Garland
+32,Technician032,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,4.84,McKinney
+33,Technician033,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,3.75,Richardson
+34,Technician034,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,3.83,Dallas_North
+35,Technician035,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,4.0,Las_Colinas
+36,Technician036,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,3.52,Plano
+37,Technician037,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,3.42,Frisco
+38,Technician038,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.01,Arlington
+39,Technician039,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,3.59,Garland
+40,Technician040,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,4.34,McKinney
+41,Technician041,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,3.94,Richardson
+42,Technician042,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,4.62,Dallas_North
+43,Technician043,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,4.39,Las_Colinas
+44,Technician044,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,3.73,Plano
+45,Technician045,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,4.61,Frisco
+46,Technician046,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,4.57,Arlington
+47,Technician047,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,3.86,Garland
+48,Technician048,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,3.69,McKinney
+49,Technician049,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,4.36,Richardson
+50,Technician050,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,3.44,Dallas_North
+51,Technician051,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,3.54,Las_Colinas
+52,Technician052,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,3.21,Plano
+53,Technician053,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,4.54,Frisco
+54,Technician054,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,4.33,Arlington
+55,Technician055,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,4.4,Garland
+56,Technician056,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,4.53,McKinney
+57,Technician057,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,3.98,Richardson
+58,Technician058,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,4.17,Dallas_North
+59,Technician059,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,3.44,Las_Colinas
+60,Technician060,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,3.39,Plano
+61,Technician061,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,4.34,Frisco
+62,Technician062,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,4.0,Arlington
+63,Technician063,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,4.16,Garland
+64,Technician064,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,4.5,McKinney
+65,Technician065,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,4.28,Richardson
+66,Technician066,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,4.14,Dallas_North
+67,Technician067,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,4.15,Las_Colinas
+68,Technician068,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,3.72,Plano
+69,Technician069,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,3.25,Frisco
+70,Technician070,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,3.94,Arlington
+71,Technician071,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,3.56,Garland
+72,Technician072,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,3.89,McKinney
+73,Technician073,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,4.65,Richardson
+74,Technician074,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,3.6,Dallas_North
+75,Technician075,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,3.3,Las_Colinas
+76,Technician076,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,3.68,Plano
+77,Technician077,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,3.7,Frisco
+78,Technician078,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.33,Arlington
+79,Technician079,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,4.15,Garland
+80,Technician080,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,4.53,McKinney
+81,Technician081,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,4.33,Richardson
+82,Technician082,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,3.89,Dallas_North
+83,Technician083,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,4.58,Las_Colinas
+84,Technician084,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,3.48,Plano
+85,Technician085,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,3.24,Frisco
+86,Technician086,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,3.35,Arlington
+87,Technician087,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,4.43,Garland
+88,Technician088,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,3.99,McKinney
+89,Technician089,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,3.47,Richardson
+90,Technician090,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,4.05,Dallas_North
+91,Technician091,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,3.46,Las_Colinas
+92,Technician092,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,4.38,Plano
+93,Technician093,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,3.96,Frisco
+94,Technician094,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,3.85,Arlington
+95,Technician095,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,3.71,Garland
+96,Technician096,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,4.27,McKinney
+97,Technician097,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,3.82,Richardson
+98,Technician098,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,3.35,Dallas_North
+99,Technician099,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,3.4,Las_Colinas
+100,Technician100,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,4.84,Plano
+101,Technician101,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,4.74,Frisco
+102,Technician102,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,4.39,Arlington
+103,Technician103,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,3.65,Garland
+104,Technician104,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,4.85,McKinney
+105,Technician105,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,4.52,Richardson
+106,Technician106,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,4.42,Dallas_North
+107,Technician107,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,3.96,Las_Colinas
+108,Technician108,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,3.66,Plano
+109,Technician109,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,3.36,Frisco
+110,Technician110,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,4.73,Arlington
+111,Technician111,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,3.97,Garland
+112,Technician112,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,3.54,McKinney
+113,Technician113,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,3.72,Richardson
+114,Technician114,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,4.18,Dallas_North
+115,Technician115,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,3.5,Las_Colinas
+116,Technician116,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,4.66,Plano
+117,Technician117,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,4.49,Frisco
+118,Technician118,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.42,Arlington
+119,Technician119,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,3.93,Garland
+120,Technician120,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,4.27,McKinney
+121,Technician121,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,4.19,Richardson
+122,Technician122,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,4.3,Dallas_North
+123,Technician123,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,3.34,Las_Colinas
+124,Technician124,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,3.91,Plano
+125,Technician125,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,3.27,Frisco
+126,Technician126,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,4.04,Arlington
+127,Technician127,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,3.76,Garland
+128,Technician128,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,3.45,McKinney
+129,Technician129,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,3.38,Richardson
+130,Technician130,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,4.2,Dallas_North
+131,Technician131,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,3.49,Las_Colinas
+132,Technician132,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,4.77,Plano
+133,Technician133,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,4.19,Frisco
+134,Technician134,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,3.79,Arlington
+135,Technician135,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,4.2,Garland
+136,Technician136,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,3.24,McKinney
+137,Technician137,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,4.83,Richardson
+138,Technician138,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,4.02,Dallas_North
+139,Technician139,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,4.53,Las_Colinas
+140,Technician140,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,3.34,Plano
+141,Technician141,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,4.03,Frisco
+142,Technician142,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,4.03,Arlington
+143,Technician143,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,4.79,Garland
+144,Technician144,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,4.17,McKinney
+145,Technician145,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,4.0,Richardson
+146,Technician146,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,3.65,Dallas_North
+147,Technician147,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,3.76,Las_Colinas
+148,Technician148,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,4.09,Plano
+149,Technician149,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,3.95,Frisco
+150,Technician150,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,3.24,Arlington
+151,Technician151,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,4.6,Garland
+152,Technician152,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,4.72,McKinney
+153,Technician153,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,3.44,Richardson
+154,Technician154,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,4.14,Dallas_North
+155,Technician155,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,3.38,Las_Colinas
+156,Technician156,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,4.34,Plano
+157,Technician157,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,3.68,Frisco
+158,Technician158,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.32,Arlington
+159,Technician159,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,4.44,Garland
+160,Technician160,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,4.51,McKinney
+161,Technician161,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,3.38,Richardson
+162,Technician162,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,4.76,Dallas_North
+163,Technician163,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,3.59,Las_Colinas
+164,Technician164,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,3.26,Plano
+165,Technician165,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,4.14,Frisco
+166,Technician166,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,3.83,Arlington
+167,Technician167,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,4.61,Garland
+168,Technician168,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,4.57,McKinney
+169,Technician169,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,3.74,Richardson
+170,Technician170,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,4.82,Dallas_North
+171,Technician171,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,3.69,Las_Colinas
+172,Technician172,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,4.08,Plano
+173,Technician173,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,3.64,Frisco
+174,Technician174,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,4.79,Arlington
+175,Technician175,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,3.48,Garland
+176,Technician176,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,3.28,McKinney
+177,Technician177,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,3.94,Richardson
+178,Technician178,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,4.89,Dallas_North
+179,Technician179,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,4.72,Las_Colinas
+180,Technician180,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,4.47,Plano
+181,Technician181,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,4.71,Frisco
+182,Technician182,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,4.72,Arlington
+183,Technician183,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,4.08,Garland
+184,Technician184,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,3.74,McKinney
+185,Technician185,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,4.51,Richardson
+186,Technician186,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,4.32,Dallas_North
+187,Technician187,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,3.84,Las_Colinas
+188,Technician188,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,3.36,Plano
+189,Technician189,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,4.47,Frisco
+190,Technician190,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,3.65,Arlington
+191,Technician191,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,4.79,Garland
+192,Technician192,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,3.61,McKinney
+193,Technician193,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,3.41,Richardson
+194,Technician194,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,4.61,Dallas_North
+195,Technician195,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,3.46,Las_Colinas
+196,Technician196,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,3.5,Plano
+197,Technician197,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,4.22,Frisco
+198,Technician198,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.69,Arlington
+199,Technician199,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,3.53,Garland
+200,Technician200,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,3.73,McKinney
+201,Technician201,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,4.52,Richardson
+202,Technician202,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,4.85,Dallas_North
+203,Technician203,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,4.05,Las_Colinas
+204,Technician204,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,3.44,Plano
+205,Technician205,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,3.22,Frisco
+206,Technician206,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,3.59,Arlington
+207,Technician207,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,3.42,Garland
+208,Technician208,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,4.35,McKinney
+209,Technician209,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,3.41,Richardson
+210,Technician210,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,4.06,Dallas_North
+211,Technician211,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,4.38,Las_Colinas
+212,Technician212,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,4.19,Plano
+213,Technician213,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,3.54,Frisco
+214,Technician214,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,4.57,Arlington
+215,Technician215,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,4.42,Garland
+216,Technician216,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,4.46,McKinney
+217,Technician217,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,3.42,Richardson
+218,Technician218,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,3.41,Dallas_North
+219,Technician219,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,4.78,Las_Colinas
+220,Technician220,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,3.88,Plano
+221,Technician221,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,3.71,Frisco
+222,Technician222,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,4.03,Arlington
+223,Technician223,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,4.33,Garland
+224,Technician224,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,4.82,McKinney
+225,Technician225,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,3.69,Richardson
+226,Technician226,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,4.77,Dallas_North
+227,Technician227,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,3.24,Las_Colinas
+228,Technician228,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,4.14,Plano
+229,Technician229,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,4.28,Frisco
+230,Technician230,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,3.38,Arlington
+231,Technician231,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,3.44,Garland
+232,Technician232,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,3.91,McKinney
+233,Technician233,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,4.84,Richardson
+234,Technician234,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,4.21,Dallas_North
+235,Technician235,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,4.79,Las_Colinas
+236,Technician236,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,4.57,Plano
+237,Technician237,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,3.99,Frisco
+238,Technician238,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.53,Arlington
+239,Technician239,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,3.23,Garland
+240,Technician240,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,3.39,McKinney
+241,Technician241,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,4.61,Richardson
+242,Technician242,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,4.55,Dallas_North
+243,Technician243,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,3.6,Las_Colinas
+244,Technician244,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,4.1,Plano
+245,Technician245,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,4.23,Frisco
+246,Technician246,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,4.68,Arlington
+247,Technician247,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,4.23,Garland
+248,Technician248,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,3.9,McKinney
+249,Technician249,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,3.84,Richardson
+250,Technician250,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,3.92,Dallas_North
+251,Technician251,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,4.31,Las_Colinas
+252,Technician252,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,4.67,Plano
+253,Technician253,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,3.97,Frisco
+254,Technician254,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,3.62,Arlington
+255,Technician255,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,3.6,Garland
+256,Technician256,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,4.47,McKinney
+257,Technician257,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,4.59,Richardson
+258,Technician258,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,3.38,Dallas_North
+259,Technician259,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,3.31,Las_Colinas
+260,Technician260,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,4.21,Plano
+261,Technician261,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,3.45,Frisco
+262,Technician262,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,4.6,Arlington
+263,Technician263,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,3.73,Garland
+264,Technician264,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,3.44,McKinney
+265,Technician265,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,4.77,Richardson
+266,Technician266,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,3.48,Dallas_North
+267,Technician267,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,3.68,Las_Colinas
+268,Technician268,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,3.46,Plano
+269,Technician269,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,3.4,Frisco
+270,Technician270,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,3.24,Arlington
+271,Technician271,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,3.29,Garland
+272,Technician272,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,3.5,McKinney
+273,Technician273,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,3.29,Richardson
+274,Technician274,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,4.2,Dallas_North
+275,Technician275,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,4.36,Las_Colinas
+276,Technician276,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,3.87,Plano
+277,Technician277,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,3.74,Frisco
+278,Technician278,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.06,Arlington
+279,Technician279,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,4.69,Garland
+280,Technician280,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,4.65,McKinney
+281,Technician281,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,3.27,Richardson
+282,Technician282,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,3.51,Dallas_North
+283,Technician283,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,3.6,Las_Colinas
+284,Technician284,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,3.62,Plano
+285,Technician285,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,4.17,Frisco
+286,Technician286,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,3.91,Arlington
+287,Technician287,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,3.28,Garland
+288,Technician288,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,3.84,McKinney
+289,Technician289,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,4.09,Richardson
+290,Technician290,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,3.37,Dallas_North
+291,Technician291,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,4.62,Las_Colinas
+292,Technician292,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,3.29,Plano
+293,Technician293,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,4.77,Frisco
+294,Technician294,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,3.37,Arlington
+295,Technician295,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,4.63,Garland
+296,Technician296,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,4.73,McKinney
+297,Technician297,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,4.87,Richardson
+298,Technician298,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,4.56,Dallas_North
+299,Technician299,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,4.53,Las_Colinas
+300,Technician300,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,4.29,Plano
+301,Technician301,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,4.52,Frisco
+302,Technician302,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,3.43,Arlington
+303,Technician303,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,4.11,Garland
+304,Technician304,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,4.07,McKinney
+305,Technician305,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,4.66,Richardson
+306,Technician306,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,3.99,Dallas_North
+307,Technician307,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,3.85,Las_Colinas
+308,Technician308,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,4.29,Plano
+309,Technician309,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,3.65,Frisco
+310,Technician310,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,3.44,Arlington
+311,Technician311,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,4.01,Garland
+312,Technician312,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,3.91,McKinney
+313,Technician313,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,3.6,Richardson
+314,Technician314,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,3.82,Dallas_North
+315,Technician315,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,3.82,Las_Colinas
+316,Technician316,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,3.76,Plano
+317,Technician317,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,3.85,Frisco
+318,Technician318,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.37,Arlington
+319,Technician319,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,3.7,Garland
+320,Technician320,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,4.81,McKinney
+321,Technician321,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,4.76,Richardson
+322,Technician322,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,4.02,Dallas_North
+323,Technician323,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,3.76,Las_Colinas
+324,Technician324,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,4.11,Plano
+325,Technician325,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,4.64,Frisco
+326,Technician326,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,4.31,Arlington
+327,Technician327,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,4.57,Garland
+328,Technician328,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,4.11,McKinney
+329,Technician329,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,4.28,Richardson
+330,Technician330,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,3.69,Dallas_North
+331,Technician331,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,4.45,Las_Colinas
+332,Technician332,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,3.54,Plano
+333,Technician333,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,4.38,Frisco
+334,Technician334,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,4.66,Arlington
+335,Technician335,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,3.42,Garland
+336,Technician336,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,4.24,McKinney
+337,Technician337,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,3.36,Richardson
+338,Technician338,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,4.43,Dallas_North
+339,Technician339,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,3.34,Las_Colinas
+340,Technician340,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,4.79,Plano
+341,Technician341,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,3.43,Frisco
+342,Technician342,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,4.83,Arlington
+343,Technician343,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,4.56,Garland
+344,Technician344,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,4.21,McKinney
+345,Technician345,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,4.53,Richardson
+346,Technician346,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,4.55,Dallas_North
+347,Technician347,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,4.81,Las_Colinas
+348,Technician348,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,3.63,Plano
+349,Technician349,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,4.2,Frisco
+350,Technician350,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,3.36,Arlington
+351,Technician351,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,4.25,Garland
+352,Technician352,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,3.49,McKinney
+353,Technician353,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,4.16,Richardson
+354,Technician354,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,4.17,Dallas_North
+355,Technician355,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,3.99,Las_Colinas
+356,Technician356,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,4.09,Plano
+357,Technician357,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,4.5,Frisco
+358,Technician358,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,4.56,Arlington
+359,Technician359,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,4.04,Garland
+360,Technician360,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,4.22,McKinney
+361,Technician361,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Richardson,4.78,Richardson
+362,Technician362,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Dallas_North,3.4,Dallas_North
+363,Technician363,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Las_Colinas,3.4,Las_Colinas
+364,Technician364,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_Plano,3.35,Plano
+365,Technician365,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Frisco,4.32,Frisco
+366,Technician366,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Arlington,3.91,Arlington
+367,Technician367,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Garland,4.52,Garland
+368,Technician368,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_McKinney,4.34,McKinney
+369,Technician369,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Richardson,3.77,Richardson
+370,Technician370,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Dallas_North,4.73,Dallas_North
+371,Technician371,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Las_Colinas,4.5,Las_Colinas
+372,Technician372,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_Plano,3.66,Plano
+373,Technician373,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Frisco,3.82,Frisco
+374,Technician374,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Arlington,3.73,Arlington
+375,Technician375,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Garland,3.47,Garland
+376,Technician376,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_McKinney,3.45,McKinney
+377,Technician377,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Richardson,4.79,Richardson
+378,Technician378,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Dallas_North,3.94,Dallas_North
+379,Technician379,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Las_Colinas,3.85,Las_Colinas
+380,Technician380,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Plano,4.44,Plano
+381,Technician381,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Frisco,4.14,Frisco
+382,Technician382,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Arlington,4.79,Arlington
+383,Technician383,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Garland,4.53,Garland
+384,Technician384,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing Electrical,Synthetic technician routed from Depot_McKinney,4.01,McKinney
+385,Technician385,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Richardson,3.84,Richardson
+386,Technician386,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Dallas_North,4.88,Dallas_North
+387,Technician387,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Las_Colinas,4.42,Las_Colinas
+388,Technician388,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Plano,4.82,Plano
+389,Technician389,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Frisco,3.4,Frisco
+390,Technician390,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Arlington,4.65,Arlington
+391,Technician391,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical,Synthetic technician routed from Depot_Garland,4.28,Garland
+392,Technician392,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC Plumbing,Synthetic technician routed from Depot_McKinney,3.41,McKinney
+393,Technician393,Depot_Richardson,Depot_Richardson,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Richardson,4.2,Richardson
+394,Technician394,Depot_Dallas_North,Depot_Dallas_North,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Dallas_North,4.37,Dallas_North
+395,Technician395,Depot_Las_Colinas,Depot_Las_Colinas,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,,Synthetic technician routed from Depot_Las_Colinas,3.22,Las_Colinas
+396,Technician396,Depot_Plano,Depot_Plano,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Electrical Controls,Synthetic technician routed from Depot_Plano,3.97,Plano
+397,Technician397,Depot_Frisco,Depot_Frisco,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_Frisco,4.6,Frisco
+398,Technician398,Depot_Arlington,Depot_Arlington,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Controls,Synthetic technician routed from Depot_Arlington,3.7,Arlington
+399,Technician399,Depot_Garland,Depot_Garland,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,Plumbing,Synthetic technician routed from Depot_Garland,3.98,Garland
+400,Technician400,Depot_McKinney,Depot_McKinney,2026-04-06 07:00:00,2026-04-06 07:45:00,150,1.0,0.35,4.5,540,130,720,1,HVAC,Synthetic technician routed from Depot_McKinney,3.95,McKinney
