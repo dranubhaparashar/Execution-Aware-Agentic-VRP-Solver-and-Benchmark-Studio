@@ -73,6 +73,8 @@ Steps:
 
 The app includes a genuine AI agent (not just a chatbot) powered by Google Gemini 2.0 Flash with function-calling. The agent autonomously chains tool calls to answer questions, detect problems, and trigger re-optimisation without human intervention.
 
+<img width="1911" height="906" alt="image" src="https://github.com/user-attachments/assets/4dab3aae-89ee-407b-8050-6c53913dc1b3" />
+
 ---
 
 ## Benchmark Results
