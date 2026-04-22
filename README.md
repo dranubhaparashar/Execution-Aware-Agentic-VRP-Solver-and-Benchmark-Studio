@@ -490,7 +490,10 @@ Synthetic dataset included in `synthetic_data/`:
 
 ## Architecture
 
-Full system architecture with 22 Mermaid diagrams is in [ARCHITECTURE.md]([ARCHITECTURE.md](https://github.com/dranubhaparashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio/wiki/Architecture-%E2%80%94-Execution%E2%80%90Aware--Agentic-VRP-Solver-and-Benchmark-Studio)) and the [GitHub Wiki](https://github.com/dranubhaparashar/Execution-Aware-VRP-Solver-and-Benchmark-Studio/wiki).
+Full system architecture and technical details:
+
+- [Complete Technical Specification](https://github.com/dranubhaparashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio/wiki/Execution%E2%80%90Aware-VRP-Solver-%E2%80%94-Complete-Technical-Specification)
+- [Architecture Overview](https://github.com/dranubhaparashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio/wiki/Architecture-%E2%80%94-Execution%E2%80%90Aware--Agentic-VRP-Solver-and-Benchmark-Studio)
 
 Covers: data flow, all 5 agents, 8 backends, OR-Tools EA split-solve deep dive, locked-prefix mechanism, Gemini agent loop, 8 tools, 4 agentic behaviors, output bundle, Streamlit tabs, policy weights, BackendConfig, benchmark results, and deployment.
 
