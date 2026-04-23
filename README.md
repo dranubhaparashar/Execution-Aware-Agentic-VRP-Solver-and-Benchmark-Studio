@@ -43,7 +43,7 @@ Explore the project here:
 
 - **GitHub:** [Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio](https://github.com/dranubhaparashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio/tree/main)
 - **Hugging Face Demo:** [Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio](https://huggingface.co/spaces/AnubhaParashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio)
-
+- **YouTube Demo:** [Watch here](https://www.youtube.com/watch?v=FqVuVjW20yo)
   
 **What you can do with this app:**
 
