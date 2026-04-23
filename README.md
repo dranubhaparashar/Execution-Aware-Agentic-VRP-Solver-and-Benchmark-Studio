@@ -36,6 +36,15 @@
 
 Field-service routing is not a one-time optimisation problem. Technicians skip jobs, shifts change, urgent orders arrive mid-day, and customers cancel — all while routes are already in execution. This studio addresses that reality with **execution-aware scheduling**: solvers that know which stops are committed, lock them in place, and re-optimise only the open work.
 
+
+## Project Links
+
+Explore the project here:
+
+- **GitHub:** [Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio](https://github.com/dranubhaparashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio/tree/main)
+- **Hugging Face Demo:** [Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio](https://huggingface.co/spaces/AnubhaParashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio)
+
+- 
 **What you can do with this app:**
 
 - Upload your own orders, routes, depots, and goal profiles
