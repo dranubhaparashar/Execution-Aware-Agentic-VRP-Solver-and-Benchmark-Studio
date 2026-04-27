@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Execution-Aware Agentic VRP Solver</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0E1B2C;
+  --bg-mid: #1A2F4A;
+  --bg-card: #233D5C;
+  --green: #3FA88A;
+  --mint: #7AC4A1;
+  --blue: #5BA4E6;
+  --amber: #E6B85B;
+  --coral: #E68B6E;
+  --purple: #9B89E6;
+  --pink: #C57FB6;
+  --text: #E8EFF7;
+  --muted: #8FA9C7;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+}
+
+/* Deck container — full viewport */
+.deck {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Each slide */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  padding: 56px 64px 88px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+}
+.slide.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* Title slide style */
+.slide.title-slide {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #1a2f4a 0%, #0e1b2c 70%);
+}
+.slide.title-slide h1 {
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(90deg, var(--blue), var(--mint));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  line-height: 1.05;
+}
+.slide.title-slide .subtitle {
+  font-size: 28px;
+  color: var(--blue);
+  font-style: italic;
+  margin-bottom: 56px;
+}
+.slide.title-slide .author {
+  margin-top: 48px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* Main slide title */
+.slide-title {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: var(--text);
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+.slide-subtitle {
+  font-size: 18px;
+  color: var(--blue);
+  font-style: italic;
+  margin-bottom: 32px;
+  flex-shrink: 0;
+}
+
+/* Stat grid */
+.stats-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.stat {
+  background: rgba(35, 61, 92, 0.6);
+  border: 1px solid var(--bg-mid);
+  border-radius: 14px;
+  padding: 24px 32px;
+  min-width: 180px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+.stat-num {
+  display: block;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--mint);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* Tech badges */
+.badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.badge {
+  background: rgba(35, 61, 92, 0.8);
+  border: 1px solid;
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.b-blue   { color: var(--blue);   border-color: var(--blue); }
+.b-green  { color: var(--mint);   border-color: var(--green); }
+.b-amber  { color: var(--amber);  border-color: var(--amber); }
+.b-purple { color: var(--purple); border-color: var(--purple); }
+.b-coral  { color: var(--coral);  border-color: var(--coral); }
+.b-pink   { color: var(--pink);   border-color: var(--pink); }
+
+/* Two/three column layout */
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; }
+.cols-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; flex: 1; }
+.cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; flex: 1; }
+
+/* Card */
+.card {
+  background: rgba(35, 61, 92, 0.7);
+  border-radius: 14px;
+  padding: 24px;
+  border-left: 5px solid var(--blue);
+  display: flex;
+  flex-direction: column;
+}
+.card.green  { border-left-color: var(--green); }
+.card.amber  { border-left-color: var(--amber); }
+.card.coral  { border-left-color: var(--coral); }
+.card.purple { border-left-color: var(--purple); }
+.card.pink   { border-left-color: var(--pink); }
+.card.winner {
+  border-left-color: var(--mint);
+  background: linear-gradient(135deg, rgba(35,61,92,0.8) 0%, rgba(63,168,138,0.2) 100%);
+  position: relative;
+}
+.card.winner::after {
+  content: "🏆";
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 24px;
+}
+.card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--blue);
+}
+.card.green h3  { color: var(--mint); }
+.card.amber h3  { color: var(--amber); }
+.card.coral h3  { color: var(--coral); }
+.card.purple h3 { color: var(--purple); }
+.card.pink h3   { color: var(--pink); }
+.card.winner h3 { color: var(--mint); }
+.card p, .card li {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+}
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+.card li {
+  padding: 4px 0;
+  padding-left: 20px;
+  position: relative;
+}
+.card li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+}
+.card.green li::before  { color: var(--mint); }
+.card.amber li::before  { color: var(--amber); }
+.card.coral li::before  { color: var(--coral); }
+.card.purple li::before { color: var(--purple); }
+.card.winner li::before { color: var(--mint); }
+
+/* Tables */
+.tbl {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 14px;
+}
+.tbl th {
+  background: var(--bg-mid);
+  color: var(--blue);
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--bg);
+}
+.tbl td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(143, 169, 199, 0.1);
+  color: var(--text);
+}
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tr.winner-row td {
+  background: rgba(63, 168, 138, 0.15);
+  color: var(--mint);
+  font-weight: 600;
+}
+
+/* Pull quote */
+.pullquote {
+  background: var(--bg-card);
+  border-left: 5px solid var(--amber);
+  padding: 24px 32px;
+  border-radius: 0 12px 12px 0;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 24px 0;
+}
+.pullquote em { color: var(--amber); font-style: normal; font-weight: 600; }
+
+/* Code block */
+.code {
+  background: #0a1626;
+  border: 1px solid var(--bg-mid);
+  border-radius: 10px;
+  padding: 24px;
+  font-family: "SF Mono", Consolas, Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  overflow-x: auto;
+  white-space: pre;
+}
+.code .kw { color: #ff79c6; }
+.code .fn { color: #50fa7b; }
+.code .str { color: #f1fa8c; }
+.code .com { color: #6272a4; font-style: italic; }
+.code .num { color: var(--amber); }
+
+/* Pipeline steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin: 16px 0 24px;
+}
+.step {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 18px;
+  border-top: 4px solid var(--blue);
+  position: relative;
+}
+.step:nth-child(1) { border-top-color: var(--blue); }
+.step:nth-child(2) { border-top-color: var(--amber); }
+.step:nth-child(3) { border-top-color: var(--green); }
+.step:nth-child(4) { border-top-color: var(--purple); }
+.step:nth-child(5) { border-top-color: var(--mint); }
+.step-num {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--bg);
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.step:nth-child(1) .step-num { background: var(--blue); }
+.step:nth-child(2) .step-num { background: var(--amber); }
+.step:nth-child(3) .step-num { background: var(--green); }
+.step:nth-child(4) .step-num { background: var(--purple); }
+.step:nth-child(5) .step-num { background: var(--mint); }
+.step h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.step p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Iframe wrapper */
+.iframe-box {
+  flex: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid var(--bg-mid);
+  background: black;
+  min-height: 60%;
+}
+.iframe-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Bar chart (CSS-only) */
+.barchart { padding: 8px 0; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 100px;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.bar-label { font-size: 16px; color: var(--text); font-weight: 500; }
+.bar-track {
+  height: 36px;
+  background: var(--bg-mid);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bar-value { font-size: 16px; font-weight: 600; color: var(--mint); text-align: right; }
+
+/* Footer/nav */
+.deck-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: rgba(14, 27, 44, 0.95);
+  border-top: 1px solid var(--bg-mid);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.deck-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--mint));
+  transition: width 0.3s;
+}
+.nav-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-mid);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.nav-btn:hover { background: var(--bg-mid); }
+.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.deck-counter {
+  color: var(--muted);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.deck-title {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Highlight colors */
+.h-mint  { color: var(--mint);   font-weight: 600; }
+.h-blue  { color: var(--blue);   font-weight: 600; }
+.h-amber { color: var(--amber);  font-weight: 600; }
+.h-coral { color: var(--coral);  font-weight: 600; }
+
+/* Tools grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+.tool {
+  background: var(--bg-card);
+  border-radius: 10px;
+  padding: 16px;
+  border-left: 3px solid var(--blue);
+}
+.tool h4 {
+  font-size: 15px;
+  font-family: "SF Mono", Consolas, monospace;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.tool p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Hint text */
+.hint {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background: rgba(35, 61, 92, 0.9);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.hint.show { opacity: 1; }
+
+/* Print mode */
+@media print {
+  html, body { overflow: visible; height: auto; }
+  .deck-footer, .hint { display: none; }
+  .slide {
+    display: flex !important;
+    opacity: 1 !important;
+    position: relative;
+    page-break-after: always;
+    height: 100vh;
+  }
+}
+
+/* ============ VISUAL UPGRADES ============ */
+
+/* Animated background gradient orbs on every slide */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
+}
+body::before {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--mint), transparent 70%);
+  top: -100px; left: -100px;
+}
+body::after {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--blue), transparent 70%);
+  bottom: -150px; right: -150px;
+  animation-delay: -10s;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(80px, -40px) scale(1.1); }
+  66% { transform: translate(-40px, 60px) scale(0.95); }
+}
+
+/* Slide entrance animation */
+.slide.active {
+  animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Slide content above background orbs */
+.slide { z-index: 1; }
+.deck { z-index: 1; }
+
+/* Title slide enhancement: animated gradient text */
+.slide.title-slide h1 {
+  background: linear-gradient(90deg, var(--blue) 0%, var(--mint) 50%, var(--amber) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 6s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+/* Stat cards: animated entrance + hover */
+.stat {
+  background: linear-gradient(135deg, rgba(35, 61, 92, 0.7) 0%, rgba(35, 61, 92, 0.4) 100%);
+  border: 1px solid rgba(91, 164, 230, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(122, 196, 161, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.slide.active .stat {
+  animation: pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+.slide.active .stat:nth-child(1) { animation-delay: 0.1s; }
+.slide.active .stat:nth-child(2) { animation-delay: 0.2s; }
+.slide.active .stat:nth-child(3) { animation-delay: 0.3s; }
+.slide.active .stat:nth-child(4) { animation-delay: 0.4s; }
+.slide.active .stat:nth-child(5) { animation-delay: 0.5s; }
+.slide.active .stat:nth-child(6) { animation-delay: 0.6s; }
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0.7) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.stat:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(63, 168, 138, 0.25);
+  border-color: var(--mint);
+}
+.stat:hover::before { opacity: 1; }
+
+.stat-num {
+  background: linear-gradient(180deg, var(--mint) 0%, var(--green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(63, 168, 138, 0.3);
+}
+
+/* Cards: glass-morphism + glow on hover */
+.card {
+  position: relative;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(35, 61, 92, 0.75) 0%, rgba(26, 47, 74, 0.65) 100%);
+  border: 1px solid rgba(143, 169, 199, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.03) 100%);
+  pointer-events: none;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+  border-color: rgba(91, 164, 230, 0.4);
+}
+.slide.active .card {
+  animation: cardIn 0.5s ease-out backwards;
+}
+.slide.active .card:nth-child(1) { animation-delay: 0.1s; }
+.slide.active .card:nth-child(2) { animation-delay: 0.2s; }
+.slide.active .card:nth-child(3) { animation-delay: 0.3s; }
+.slide.active .card:nth-child(4) { animation-delay: 0.4s; }
+.slide.active .card:nth-child(5) { animation-delay: 0.5s; }
+.slide.active .card:nth-child(6) { animation-delay: 0.6s; }
+.slide.active .card:nth-child(7) { animation-delay: 0.7s; }
+.slide.active .card:nth-child(8) { animation-delay: 0.8s; }
+.slide.active .card:nth-child(9) { animation-delay: 0.9s; }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Winner card: pulsing glow */
+.card.winner {
+  border: 1px solid rgba(122, 196, 161, 0.4);
+  box-shadow: 0 0 0 0 rgba(122, 196, 161, 0.4),
+              0 8px 24px rgba(0, 0, 0, 0.3);
+  animation: winnerPulse 3s ease-in-out infinite;
+}
+@keyframes winnerPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(122, 196, 161, 0.3),
+                0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(122, 196, 161, 0),
+                0 12px 36px rgba(122, 196, 161, 0.25);
+  }
+}
+
+/* Badges: glow on hover */
+.badge {
+  background: linear-gradient(135deg, rgba(35, 61, 92, 0.9) 0%, rgba(26, 47, 74, 0.7) 100%);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+.badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px currentColor;
+}
+
+/* Bar charts: scale-in animation that doesn't break inline widths */
+.bar-fill {
+  transform-origin: left center;
+}
+.slide.active .bar-fill {
+  animation: barGrow 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.bar-fill {
+  position: relative;
+  overflow: hidden;
+}
+.bar-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shine 2s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.bar-track {
+  border: 1px solid rgba(143, 169, 199, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Tables: smooth row reveal */
+.tbl tr {
+  transition: background 0.2s;
+}
+.tbl tbody tr:hover td {
+  background: rgba(91, 164, 230, 0.05);
+}
+.tbl tr.winner-row {
+  position: relative;
+}
+.tbl tr.winner-row td {
+  background: linear-gradient(90deg, rgba(63, 168, 138, 0.18) 0%, rgba(63, 168, 138, 0.08) 100%);
+}
+.slide.active .tbl tr {
+  animation: rowIn 0.4s ease-out backwards;
+}
+.slide.active .tbl tr:nth-child(1) { animation-delay: 0.05s; }
+.slide.active .tbl tr:nth-child(2) { animation-delay: 0.1s; }
+.slide.active .tbl tr:nth-child(3) { animation-delay: 0.15s; }
+.slide.active .tbl tr:nth-child(4) { animation-delay: 0.2s; }
+.slide.active .tbl tr:nth-child(5) { animation-delay: 0.25s; }
+.slide.active .tbl tr:nth-child(6) { animation-delay: 0.3s; }
+.slide.active .tbl tr:nth-child(7) { animation-delay: 0.35s; }
+.slide.active .tbl tr:nth-child(8) { animation-delay: 0.4s; }
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Pipeline steps: stagger in + connector lines */
+.steps { position: relative; }
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--amber), var(--green), var(--purple), var(--mint));
+  opacity: 0.3;
+  z-index: 0;
+}
+.step {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(35, 61, 92, 0.9) 0%, rgba(26, 47, 74, 0.7) 100%);
+  border: 1px solid rgba(143, 169, 199, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+.slide.active .step {
+  animation: stepIn 0.5s ease-out backwards;
+}
+.slide.active .step:nth-child(1) { animation-delay: 0.1s; }
+.slide.active .step:nth-child(2) { animation-delay: 0.25s; }
+.slide.active .step:nth-child(3) { animation-delay: 0.4s; }
+.slide.active .step:nth-child(4) { animation-delay: 0.55s; }
+.slide.active .step:nth-child(5) { animation-delay: 0.7s; }
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.step-num {
+  box-shadow: 0 0 0 4px rgba(35, 61, 92, 1), 0 0 20px currentColor;
+  position: relative;
+  font-size: 18px;
+}
+
+/* Pull quote: subtle glow */
+.pullquote {
+  background: linear-gradient(135deg, rgba(35, 61, 92, 0.85) 0%, rgba(26, 47, 74, 0.7) 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3),
+              -4px 0 12px rgba(230, 184, 91, 0.15);
+  position: relative;
+}
+.pullquote::before {
+  content: """";
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--amber);
+  opacity: 0.2;
+  font-family: Georgia, serif;
+}
+
+/* Code blocks: terminal styling */
+.code {
+  background: linear-gradient(180deg, #0a1626 0%, #050a13 100%);
+  box-shadow: inset 0 0 0 1px rgba(143, 169, 199, 0.1),
+              0 8px 24px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+.code::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px; left: 16px;
+  color: rgba(255, 95, 86, 0.5);
+  letter-spacing: 8px;
+  font-size: 12px;
+}
+.code {
+  padding-top: 32px !important;
+}
+
+/* Tools grid: gradient backgrounds + hover */
+.tool {
+  background: linear-gradient(135deg, rgba(35, 61, 92, 0.8) 0%, rgba(26, 47, 74, 0.6) 100%);
+  border: 1px solid rgba(143, 169, 199, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tool:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(91, 164, 230, 0.2);
+  border-color: var(--blue);
+}
+
+/* Iframe box: glow border */
+.iframe-box {
+  box-shadow: 0 0 0 1px rgba(91, 164, 230, 0.3),
+              0 12px 48px rgba(0, 0, 0, 0.6),
+              0 0 80px rgba(63, 168, 138, 0.15);
+  position: relative;
+}
+
+/* Footer: glassmorphism */
+.deck-footer {
+  background: linear-gradient(180deg, rgba(14, 27, 44, 0.6) 0%, rgba(14, 27, 44, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(91, 164, 230, 0.2);
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, rgba(35, 61, 92, 0.9) 0%, rgba(26, 47, 74, 0.7) 100%);
+  border: 1px solid rgba(143, 169, 199, 0.2);
+  transition: all 0.2s;
+}
+.nav-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+  color: var(--bg);
+  border-color: var(--mint);
+  box-shadow: 0 4px 16px rgba(91, 164, 230, 0.4);
+}
+
+.deck-progress {
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--mint), var(--amber));
+  background-size: 200% auto;
+  animation: progressShimmer 3s linear infinite;
+  box-shadow: 0 0 12px rgba(122, 196, 161, 0.6);
+}
+@keyframes progressShimmer {
+  to { background-position: 200% center; }
+}
+
+/* Slide title: subtle underline accent */
+.slide-title {
+  position: relative;
+  padding-bottom: 4px;
+}
+.slide-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--mint));
+  border-radius: 2px;
+}
+
+/* Inline icons (utility class) */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: middle;
+  margin-right: 0.3em;
+}
+
+/* Code keyword highlights: a touch brighter */
+.code .kw  { color: #ff79c6; font-weight: 500; }
+.code .fn  { color: #50fa7b; font-weight: 500; }
+.code .str { color: #f1fa8c; }
+.code .com { color: #6272a4; font-style: italic; }
+.code .num { color: var(--amber); }
+
+
+/* ============ Demo launcher cards ============ */
+.demo-launcher {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-card {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 40px;
+  background: linear-gradient(135deg, rgba(35,61,92,0.85) 0%, rgba(26,47,74,0.7) 100%);
+  border: 2px solid rgba(63,168,138,0.4);
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(91,164,230,0.2),
+              0 12px 48px rgba(0,0,0,0.5),
+              0 0 80px rgba(63,168,138,0.2);
+  text-decoration: none;
+  color: var(--text);
+  width: 90%;
+  max-width: 1000px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.demo-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 50%, rgba(63,168,138,0.08) 100%);
+  pointer-events: none;
+}
+.demo-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--mint);
+  box-shadow: 0 0 0 1px var(--mint),
+              0 16px 64px rgba(0,0,0,0.6),
+              0 0 120px rgba(63,168,138,0.4);
+}
+.demo-card.video-card {
+  border-color: rgba(230,139,110,0.4);
+  box-shadow: 0 0 0 1px rgba(230,139,110,0.2),
+              0 12px 48px rgba(0,0,0,0.5),
+              0 0 80px rgba(230,139,110,0.2);
+}
+.demo-card.video-card:hover {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 1px var(--coral),
+              0 16px 64px rgba(0,0,0,0.6),
+              0 0 120px rgba(230,139,110,0.4);
+}
+
+.demo-icon {
+  font-size: 96px;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 16px rgba(63,168,138,0.4));
+  animation: bounce 2s ease-in-out infinite;
+}
+.demo-icon.video-icon {
+  color: var(--coral);
+  font-size: 80px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--coral), var(--amber));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg);
+  padding-left: 8px;
+  filter: drop-shadow(0 4px 16px rgba(230,139,110,0.4));
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.demo-text { flex: 1; }
+.demo-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--mint);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.demo-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.demo-url {
+  font-family: "SF Mono", Consolas, monospace;
+  font-size: 14px;
+  color: var(--blue);
+  margin-bottom: 16px;
+  word-break: break-all;
+}
+.demo-cta {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--green) 0%, var(--mint) 100%);
+  color: var(--bg) !important;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 4px 16px rgba(63,168,138,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.demo-card:hover .demo-cta {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(63,168,138,0.6);
+}
+
+.demo-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 90%;
+  max-width: 1000px;
+}
+.demo-feat {
+  background: rgba(35,61,92,0.6);
+  border: 1px solid rgba(143,169,199,0.15);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.feat-num {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--blue), var(--mint));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.feat-lbl {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+<!-- ============ SLIDE 1: TITLE ============ -->
+<section class="slide title-slide active" data-title="Welcome">
+  <h1>Execution-Aware<br>Agentic VRP Solver</h1>
+  <div class="subtitle">and Benchmark Studio</div>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Solver Backends</span></div>
+    <div class="stat"><span class="stat-num">18</span><span class="stat-label">Test Scenarios</span></div>
+    <div class="stat"><span class="stat-num">770s</span><span class="stat-label">Winner Runtime</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-label">Violations</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-blue">Python</span>
+    <span class="badge b-green">OR-Tools</span>
+    <span class="badge b-amber">Streamlit</span>
+    <span class="badge b-purple">Gemini 2.0 Flash</span>
+    <span class="badge b-coral">Hugging Face</span>
+  </div>
+  <div class="author">Anubha Parashar · April 2026</div>
+</section>
+
+<!-- ============ SLIDE 2: TOC ============ -->
+<section class="slide" data-title="Contents">
+  <h2 class="slide-title">What we'll cover</h2>
+  <div class="cols-2" style="grid-template-rows: repeat(4, 1fr); gap: 16px;">
+    <div class="card"><h3>Part 1 · Problem & Vision</h3><p>Static VRP solvers vs live dispatch reality</p></div>
+    <div class="card green"><h3>Part 2 · The 8 Backends</h3><p>Algorithm families & complexity</p></div>
+    <div class="card amber"><h3>Part 3 · Split-Solve Innovation</h3><p>Why OR-Tools EA wins · locked-prefix mechanism</p></div>
+    <div class="card purple"><h3>Part 4 · Benchmark Results</h3><p>Per-scenario performance · trade-offs</p></div>
+    <div class="card coral"><h3>Part 5 · 18 Scenarios</h3><p>EAS · RT · GB stress tests</p></div>
+    <div class="card"><h3>Part 6 · Agentic AI Layer</h3><p>Gemini · 8 tools · 4 behaviors</p></div>
+    <div class="card green"><h3>Part 7 · Architecture & Code</h3><p>5 agents · 8,140 lines · system flow</p></div>
+    <div class="card amber"><h3>Part 8 · Deployment & Demo</h3><p>Docker · HF Spaces · live walkthrough</p></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 3: PROBLEM ============ -->
+<section class="slide" data-title="Problem">
+  <h2 class="slide-title">The Problem</h2>
+  <div class="pullquote">
+    Most VRP solvers are designed for <em>static</em> route planning.<br>
+    Real dispatch is <em>dynamic</em> — and chaotic.
+  </div>
+  <div class="cols-2" style="margin-top: 16px;">
+    <div class="card amber">
+      <h3>In production reality</h3>
+      <ul>
+        <li>Technicians are mid-route when changes hit</li>
+        <li>Drivers call in sick at 8 AM</li>
+        <li>Urgent SLA orders inject mid-day</li>
+        <li>Customers cancel after dispatch</li>
+        <li>Shifts get delayed or cut short</li>
+        <li>Service times shift as work expands</li>
+      </ul>
+    </div>
+    <div class="card coral">
+      <h3>What standard solvers do</h3>
+      <ul>
+        <li>Re-solve from scratch every time</li>
+        <li>Reroute already-completed stops</li>
+        <li>Lose execution state</li>
+        <li>Miss SLA windows during re-planning</li>
+        <li>No awareness of in-progress work</li>
+        <li>Treat every change as a full restart</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4: VISION ============ -->
+<section class="slide" data-title="Vision">
+  <h2 class="slide-title">The Vision</h2>
+  <p class="slide-subtitle">Build a VRP solver that knows execution state — and a benchmark that proves it works.</p>
+  <div class="cols-3">
+    <div class="card green">
+      <h3>1 · Compare</h3>
+      <p>Side-by-side benchmark of <span class="h-mint">8 solver families</span> on identical inputs.</p>
+      <p style="margin-top:12px;">Fair, reproducible, visual.</p>
+    </div>
+    <div class="card amber">
+      <h3>2 · Preserve</h3>
+      <p>Lock <span class="h-amber">in-progress routes</span> so re-optimization respects committed work.</p>
+      <p style="margin-top:12px;">New: split-solve architecture.</p>
+    </div>
+    <div class="card purple">
+      <h3>3 · Self-correct</h3>
+      <p>An <span style="color:var(--purple);font-weight:600;">AI agent</span> that detects violations and triggers re-optimization autonomously.</p>
+      <p style="margin-top:12px;">Gemini 2.0 Flash · 8 tools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5: LIVE DEMO ============ -->
+<section class="slide" data-title="Live Demo">
+  <h2 class="slide-title">🚀 Live Demo</h2>
+  <p class="slide-subtitle">Hosted on Hugging Face Spaces · pre-loaded with synthetic dataset & benchmark artifacts</p>
+  <div class="demo-launcher">
+    <a href="https://huggingface.co/spaces/AnubhaParashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio"
+       target="_blank" rel="noopener" class="demo-card">
+      <div class="demo-icon">🤗</div>
+      <div class="demo-text">
+        <div class="demo-label">CLICK TO OPEN</div>
+        <div class="demo-title">Execution-Aware Agentic VRP Solver</div>
+        <div class="demo-url">huggingface.co/spaces/AnubhaParashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio</div>
+        <div class="demo-cta">Open Live App in New Tab →</div>
+      </div>
+    </a>
+    <div class="demo-features">
+      <div class="demo-feat"><div class="feat-num">8</div><div class="feat-lbl">Backends pre-computed</div></div>
+      <div class="demo-feat"><div class="feat-num">18</div><div class="feat-lbl">Scenarios ready</div></div>
+      <div class="demo-feat"><div class="feat-num">🤖</div><div class="feat-lbl">AI Agent ready</div></div>
+      <div class="demo-feat"><div class="feat-num">⚡</div><div class="feat-lbl">Auto-loads on open</div></div>
+    </div>
+  </div>
+  <p style="text-align:center; color:var(--muted); font-size:13px; margin-top:12px;">
+    Hugging Face blocks iframe embeds for security — opens in a new tab
+  </p>
+</section>
+
+<!-- ============ SLIDE 6: 8 BACKENDS GRID ============ -->
+<section class="slide" data-title="8 Backends">
+  <h2 class="slide-title">The 8 Solver Backends</h2>
+  <div class="cols-3" style="grid-template-rows: repeat(3, 1fr);">
+    <div class="card winner"><h3>OR-Tools EA</h3><p>Split-solve CP + GLS + greedy fallback</p><p class="h-mint" style="margin-top:8px;">770s · 0 violations</p></div>
+    <div class="card"><h3>OR-Tools</h3><p>CVRPTW + Guided Local Search</p><p style="margin-top:8px;">868s · 0 violations</p></div>
+    <div class="card amber"><h3>Esri ArcGIS</h3><p>Tabu Search (cloud)</p><p style="margin-top:8px;">973s · drops 8 orders</p></div>
+    <div class="card purple"><h3>Adaptive</h3><p>Multi-restart regret</p><p style="margin-top:8px;">6,472s · 0 violations</p></div>
+    <div class="card pink"><h3>Hybrid</h3><p>Regret + LNS</p><p style="margin-top:8px;">1,790s · 0 violations</p></div>
+    <div class="card coral"><h3>Greedy + 2-opt</h3><p>Nearest-neighbour</p><p style="margin-top:8px;">22s · 231,070 late min</p></div>
+    <div class="card coral"><h3>PyVRP</h3><p>Hybrid Genetic Search</p><p style="margin-top:8px;">545s · ignores TW</p></div>
+    <div class="card coral"><h3>OSRM</h3><p>Greedy + road distances</p><p style="margin-top:8px;">4,949s · violations</p></div>
+    <div class="card amber"><h3>Production filter</h3><p>Only 4 of 8 backends pass</p><p style="margin-top:8px;" class="h-amber">100% assigned + zero violations</p></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7: ALGO FAMILIES ============ -->
+<section class="slide" data-title="Algorithm Families">
+  <h2 class="slide-title">Algorithm Families</h2>
+  <table class="tbl">
+    <thead><tr><th>Family</th><th>Backends</th><th>Approach</th><th>TW</th><th>Production?</th></tr></thead>
+    <tbody>
+      <tr class="winner-row"><td><strong>Constraint Programming</strong></td><td>OR-Tools, OR-Tools EA</td><td>Variables + constraints + search</td><td>Hard</td><td>✅ Yes</td></tr>
+      <tr><td>Metaheuristics</td><td>Hybrid, Adaptive, PyVRP</td><td>Iterative improvement</td><td>Penalty / Hard</td><td>⚠️ Specialized</td></tr>
+      <tr><td>Greedy Heuristics</td><td>Greedy, OSRM</td><td>Local decisions, no global view</td><td>Cost only</td><td>❌ Baseline</td></tr>
+      <tr><td>Commercial Cloud</td><td>Esri ArcGIS</td><td>Tabu Search (proprietary)</td><td>Soft (drops)</td><td>⚠️ Enterprise</td></tr>
+    </tbody>
+  </table>
+  <div class="pullquote" style="margin-top: 24px;">
+    All 8 backends share the same I/O contract:<br><code style="font-size:18px; color:var(--mint);">run_*_backend(inputs, config) → bundle</code>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8: MASTER TABLE ============ -->
+<section class="slide" data-title="Master Benchmark">
+  <h2 class="slide-title">Master Benchmark Table</h2>
+  <p class="slide-subtitle">150 orders · 20 routes · 18 scenarios · means</p>
+  <table class="tbl">
+    <thead><tr><th>Backend</th><th>Asgn</th><th>BASE km</th><th>EAS km</th><th>RT km</th><th>GB km</th><th>Late</th><th>OT</th><th>Runtime</th></tr></thead>
+    <tbody>
+      <tr class="winner-row"><td><strong>OR-Tools EA</strong></td><td>150</td><td>231.8</td><td>232.8</td><td>232.1</td><td>239.8</td><td>0</td><td>0</td><td>770s</td></tr>
+      <tr><td>OR-Tools</td><td>150</td><td>233.2</td><td>233.4</td><td>234.6</td><td>243.2</td><td>0</td><td>0</td><td>868s</td></tr>
+      <tr><td>Esri</td><td>142</td><td>238.7</td><td>238.8</td><td>206.3</td><td>240.3</td><td>34</td><td>0</td><td>973s</td></tr>
+      <tr><td>Adaptive</td><td>150</td><td>424.1</td><td>349.7</td><td>364.1</td><td>341.6</td><td>0</td><td>0</td><td>6,472s</td></tr>
+      <tr><td>Hybrid</td><td>150</td><td>424.1</td><td>465.3</td><td>462.2</td><td>356.1</td><td>0</td><td>0</td><td>1,790s</td></tr>
+      <tr><td>Greedy</td><td>150</td><td>394.4</td><td>387.1</td><td>387.3</td><td>391.2</td><td>231,070</td><td>46,191</td><td>22s</td></tr>
+      <tr><td>PyVRP</td><td>150</td><td>114.0</td><td>111.8</td><td>112.5</td><td>118.1</td><td>134,483</td><td>70,615</td><td>545s</td></tr>
+      <tr><td>OSRM</td><td>150</td><td>519.3</td><td>522.5</td><td>518.8</td><td>509.9</td><td>245,827</td><td>52,266</td><td>4,949s</td></tr>
+    </tbody>
+  </table>
+  <p class="h-mint" style="text-align: center; margin-top: 16px; font-size: 15px;">
+    OR-Tools EA: only backend with 100% assignment + zero violations + sub-1000s runtime
+  </p>
+</section>
+
+<!-- ============ SLIDE 9: DISTANCE BAR CHART ============ -->
+<section class="slide" data-title="Distance Chart">
+  <h2 class="slide-title">Distance — Zero-Violation Backends</h2>
+  <p class="slide-subtitle">BASE scenario · lower is better</p>
+  <div class="barchart">
+    <div class="bar-row">
+      <div class="bar-label">OR-Tools EA 🏆</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 54.7%; background:linear-gradient(90deg, var(--green), var(--mint));"></div></div>
+      <div class="bar-value">231.8 km</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">OR-Tools</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 55.0%; background:var(--blue);"></div></div>
+      <div class="bar-value">233.2 km</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Esri</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 56.3%; background:var(--amber);"></div></div>
+      <div class="bar-value">238.7 km</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Hybrid</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 100%; background:var(--purple);"></div></div>
+      <div class="bar-value">424.1 km</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Adaptive</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 100%; background:var(--pink);"></div></div>
+      <div class="bar-value">424.1 km</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10: RUNTIME CHART ============ -->
+<section class="slide" data-title="Runtime Chart">
+  <h2 class="slide-title">Runtime — All 18 Scenarios</h2>
+  <p class="slide-subtitle">Total seconds · log scale · lower is faster</p>
+  <div class="barchart">
+    <div class="bar-row">
+      <div class="bar-label">Greedy</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 18%; background:var(--coral);"></div></div>
+      <div class="bar-value">22 s</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">PyVRP</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 54%; background:var(--pink);"></div></div>
+      <div class="bar-value">545 s</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">OR-Tools EA 🏆</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 57%; background:linear-gradient(90deg, var(--green), var(--mint));"></div></div>
+      <div class="bar-value">770 s</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">OR-Tools</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 58%; background:var(--blue);"></div></div>
+      <div class="bar-value">868 s</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Esri</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 59%; background:var(--amber);"></div></div>
+      <div class="bar-value">973 s</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Hybrid</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 67%; background:var(--purple);"></div></div>
+      <div class="bar-value">1,790 s</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">OSRM</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 84%; background:var(--coral);"></div></div>
+      <div class="bar-value">4,949 s</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Adaptive</div>
+      <div class="bar-track"><div class="bar-fill" style="width: 88%; background:var(--pink);"></div></div>
+      <div class="bar-value">6,472 s</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 11: HEAD-TO-HEAD ============ -->
+<section class="slide" data-title="Head-to-Head">
+  <h2 class="slide-title">OR-Tools vs OR-Tools EA</h2>
+  <p class="slide-subtitle">Same accuracy · OR-Tools EA is 11% faster · better on every scenario group</p>
+  <table class="tbl">
+    <thead><tr><th>Metric</th><th>OR-Tools (plain)</th><th>OR-Tools EA</th><th>Improvement</th></tr></thead>
+    <tbody>
+      <tr><td>BASE distance</td><td>233.2 km</td><td>231.8 km</td><td class="h-mint">−1.4 km</td></tr>
+      <tr><td>EAS avg distance</td><td>233.4 km</td><td>232.8 km</td><td class="h-mint">−0.6 km</td></tr>
+      <tr><td>RT avg distance</td><td>234.6 km</td><td>232.1 km</td><td class="h-mint">−2.5 km</td></tr>
+      <tr><td>GB avg distance</td><td>243.2 km</td><td>239.8 km</td><td class="h-mint">−3.4 km</td></tr>
+      <tr><td>Late minutes</td><td>0</td><td>0</td><td>same</td></tr>
+      <tr><td>Overtime minutes</td><td>0</td><td>0</td><td>same</td></tr>
+      <tr class="winner-row"><td>Total runtime</td><td>868 s</td><td>770 s</td><td>−11%</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ SLIDE 12: SPLIT-SOLVE INNOVATION ============ -->
+<section class="slide" data-title="Split-Solve">
+  <h2 class="slide-title">The Split-Solve Innovation</h2>
+  <p class="slide-subtitle">Locked orders never enter the OR-Tools model</p>
+  <div class="cols-2">
+    <div class="card coral">
+      <h3>❌ Naïve approach</h3>
+      <ul>
+        <li>Submit all 150 orders to solver</li>
+        <li>130 with zero-slack TW constraints</li>
+        <li><code>PATH_CHEAPEST_ARC</code> fails to find feasible</li>
+        <li>0 orders assigned</li>
+        <li>Solver wastes time on infeasibility</li>
+        <li>No way to improve from there</li>
+      </ul>
+    </div>
+    <div class="card winner">
+      <h3>Split-solve</h3>
+      <ul>
+        <li>Submit only ~10 open orders</li>
+        <li>Locked stops copied verbatim from baseline</li>
+        <li>Vehicle anchored at last locked stop</li>
+        <li>GLS gets full 45s budget for improvement</li>
+        <li>150/150 assigned · zero violations</li>
+        <li>Greedy fallback catches edge cases</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 13: PIPELINE ============ -->
+<section class="slide" data-title="Split-Solve Pipeline">
+  <h2 class="slide-title">Split-Solve Pipeline</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h4>Separate</h4><p>Locked vs open orders by OrderId</p></div>
+    <div class="step"><div class="step-num">2</div><h4>Anchor</h4><p>Each vehicle starts at last locked stop</p></div>
+    <div class="step"><div class="step-num">3</div><h4>Solve</h4><p>Small OR-Tools model · full GLS budget</p></div>
+    <div class="step"><div class="step-num">4</div><h4>Merge</h4><p>Locked verbatim + open from solver</p></div>
+    <div class="step"><div class="step-num">5</div><h4>Fallback</h4><p>Greedy catch · 100% assignment</p></div>
+  </div>
+  <pre class="code"><span class="kw">def</span> <span class="fn">_ortools_ea_solve_scenario</span>(scenario, orders, routes, locked_prefixes):
+    locked_ids = {oid <span class="kw">for</span> prefix <span class="kw">in</span> locked_prefixes.values() <span class="kw">for</span> oid <span class="kw">in</span> prefix.OrderId}
+    open_orders = orders[~orders.OrderId.isin(locked_ids)]
+
+    anchors = {r: _anchor_position(r, locked_prefixes[r]) <span class="kw">for</span> r <span class="kw">in</span> routes}
+
+    solution = ortools_solve(open_orders, routes, anchors, time_limit=<span class="num">45</span>)
+    result = _merge_locked_with_solution(locked_prefixes, solution, anchors)
+
+    <span class="kw">return</span> _greedy_catch_unassigned(result, open_orders)</pre>
+</section>
+
+<!-- ============ SLIDE 14: LOCKED-PREFIX ============ -->
+<section class="slide" data-title="Locked Prefix">
+  <h2 class="slide-title">Locked-Prefix Mechanism</h2>
+  <p class="slide-subtitle">Determines which stops are stable and can be frozen</p>
+  <div class="cols-2" style="margin-bottom: 20px;">
+    <div class="card">
+      <h3>Detection logic</h3>
+      <ul>
+        <li><code>changed_order_ids</code> = baseline ⊕ scenario</li>
+        <li><code>impacted_routes</code> = routes containing changes</li>
+        <li><code>fully_locked</code> = routes with zero changes</li>
+        <li><code>partial_lock</code> = stops up to first change</li>
+      </ul>
+    </div>
+    <div class="card amber">
+      <h3>Special cases</h3>
+      <ul>
+        <li><strong>RT_1</strong> (urgent inject) → unlock 2 nearest routes</li>
+        <li><strong>RT_6</strong> (sick technician) → drop route entirely</li>
+        <li><strong>RT_7</strong> (combined) → multi-route unlock</li>
+        <li>Default → preserve all stable stops</li>
+      </ul>
+    </div>
+  </div>
+  <pre class="code"><span class="kw">def</span> <span class="fn">_prepare_locked_prefixes</span>(scenario_key, baseline, scenario_orders):
+    changed = _changed_order_ids(baseline.orders, scenario_orders)
+    impacted = {r <span class="kw">for</span> r <span class="kw">in</span> baseline.routes
+                <span class="kw">if</span> any(s.OrderId <span class="kw">in</span> changed <span class="kw">for</span> s <span class="kw">in</span> r.stops)}
+
+    <span class="kw">return</span> {r.name: r.stops[:first_impact(r, changed)]
+            <span class="kw">if</span> r.name <span class="kw">in</span> impacted <span class="kw">else</span> r.stops
+            <span class="kw">for</span> r <span class="kw">in</span> baseline.routes}</pre>
+</section>
+
+<!-- ============ SLIDE 15: 18 SCENARIOS ============ -->
+<section class="slide" data-title="18 Scenarios">
+  <h2 class="slide-title">The 18 Test Scenarios</h2>
+  <div class="cols-2" style="grid-template-rows: auto 1fr;">
+    <div class="card green" style="grid-column:1/-1; flex-direction:row; align-items:center; gap:24px;">
+      <div style="font-size:64px; font-weight:800; color:var(--mint);">1</div>
+      <div>
+        <h3 style="margin-bottom:4px;">BASE</h3>
+        <p>Baseline solve · no mutation applied</p>
+      </div>
+    </div>
+    <div class="card amber">
+      <h3>EAS · 4 scenarios — Execution-Aware</h3>
+      <ul>
+        <li><strong>EAS_1</strong> · TimeWindow shift +60min</li>
+        <li><strong>EAS_2</strong> · ServiceTime +40min</li>
+        <li><strong>EAS_3</strong> · PreferredDepot change</li>
+        <li><strong>EAS_4</strong> · Downstream cascade</li>
+      </ul>
+    </div>
+    <div class="card coral">
+      <h3>RT · 7 scenarios — Real-Time</h3>
+      <ul>
+        <li><strong>RT_1</strong> · Inject urgent order</li>
+        <li><strong>RT_2</strong> · Cancellation</li>
+        <li><strong>RT_3</strong> · ServiceTime ×1.35</li>
+        <li><strong>RT_4</strong> · Shift delay +90min</li>
+        <li><strong>RT_5</strong> · Window shrink</li>
+        <li><strong>RT_6</strong> · Technician sick</li>
+        <li><strong>RT_7</strong> · Combined real-time</li>
+      </ul>
+    </div>
+    <div class="card purple" style="grid-column:1/-1;">
+      <h3>GB · 6 scenarios — Goal-Based</h3>
+      <p>Custom weight overrides per goal: <strong>GB_1</strong> minimize travel · <strong>GB_2</strong> prefer rated · <strong>GB_3</strong> prefer specialized · <strong>GB_4</strong> maximize SLA · <strong>GB_5</strong> reduce overtime · <strong>GB_6</strong> customer weights from goal_profiles.csv</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 16: AGENTIC AI LAYER ============ -->
+<section class="slide" data-title="Agentic AI">
+  <h2 class="slide-title">The Agentic AI Layer</h2>
+  <p class="slide-subtitle">Powered by Google Gemini 2.0 Flash · free tier · 1,500 req/day</p>
+  <div class="cols-2">
+    <div class="card">
+      <h3>VRPOrchestrator class</h3>
+      <ul>
+        <li>Wraps Gemini with function-calling</li>
+        <li>8 callable tools (JSON Schema → FunctionDeclaration)</li>
+        <li>4 distinct agentic behaviors</li>
+        <li>Max 10 iterations per query</li>
+        <li>Stateful chat session</li>
+        <li>Tool calls log for full audit trail</li>
+      </ul>
+    </div>
+    <div class="card winner">
+      <h3>Why agentic, not just chat?</h3>
+      <ul>
+        <li>Detects violations <span class="h-mint">autonomously</span></li>
+        <li>Picks config without human input</li>
+        <li>Re-runs solver, compares results</li>
+        <li>Chains multiple tool calls in one turn</li>
+        <li>No "ask permission" loops</li>
+        <li>Self-correcting under disruption</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 17: 8 TOOLS ============ -->
+<section class="slide" data-title="8 Tools">
+  <h2 class="slide-title">8 Agent Tools</h2>
+  <div class="cols-3">
+    <div class="card">
+      <h3>Discovery</h3>
+      <p style="color:var(--muted); font-size:13px; margin-bottom:12px;">What's available?</p>
+      <ul>
+        <li><code>get_scenario_list</code></li>
+        <li><code>explain_scenario</code></li>
+      </ul>
+    </div>
+    <div class="card amber">
+      <h3>Analysis</h3>
+      <p style="color:var(--muted); font-size:13px; margin-bottom:12px;">What's wrong?</p>
+      <ul>
+        <li><code>analyze_results</code></li>
+        <li><code>detect_violations</code></li>
+        <li><code>compare_backends</code></li>
+      </ul>
+    </div>
+    <div class="card winner">
+      <h3>Action</h3>
+      <p style="color:var(--muted); font-size:13px; margin-bottom:12px;">Fix it.</p>
+      <ul>
+        <li><code>suggest_config</code></li>
+        <li><code>run_backend</code></li>
+        <li><code>trigger_reoptimization</code></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pullquote" style="margin-top: 24px;">
+    System prompt: <em>"For violation complaints: call detect_violations, then trigger_reoptimization. Chain tool calls — do NOT ask user for permission."</em>
+  </div>
+</section>
+
+<!-- ============ SLIDE 18: 4 BEHAVIORS ============ -->
+<section class="slide" data-title="4 Behaviors">
+  <h2 class="slide-title">4 Agentic Behaviors</h2>
+  <div class="cols-2">
+    <div class="card">
+      <h3>1 · Natural language</h3>
+      <p style="font-style:italic; color:var(--muted); margin-bottom:8px;">"Which backend for SLA?"</p>
+      <p>→ <code>compare_backends</code> → ranked answer<br>→ <code>analyze_results</code> on top backend → explain</p>
+    </div>
+    <div class="card amber">
+      <h3>2 · Autonomous re-optimization</h3>
+      <p style="font-style:italic; color:var(--muted); margin-bottom:8px;">"Fix violations in Greedy"</p>
+      <p>→ <code>detect_violations</code> → <code>suggest_config</code><br>→ <code>trigger_reoptimization</code> → before/after diff</p>
+    </div>
+    <div class="card purple">
+      <h3>3 · Multi-step reasoning</h3>
+      <p style="font-style:italic; color:var(--muted); margin-bottom:8px;">"Run A and B, which is better?"</p>
+      <p>→ <code>run_backend</code>(A) → <code>run_backend</code>(B)<br>→ <code>compare_backends</code> → ranked comparison</p>
+    </div>
+    <div class="card coral">
+      <h3>4 · Real-time reactive</h3>
+      <p style="font-style:italic; color:var(--muted); margin-bottom:8px;">Button: "Driver sick (RT_6)"</p>
+      <p>→ <code>explain_scenario</code> → <code>run_backend</code><br>→ <code>analyze_results</code> → recommend re-routing</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 19: AGENT LOOP CODE ============ -->
+<section class="slide" data-title="Agent Loop">
+  <h2 class="slide-title">The Agent Loop</h2>
+  <pre class="code"><span class="kw">def</span> <span class="fn">_run_agent_loop</span>(self, user_message: str) -> str:
+    max_iterations = <span class="num">10</span>
+    current_message = user_message
+
+    <span class="kw">while</span> iteration < max_iterations:
+        response = self._chat_session.send_message(current_message)
+
+        <span class="com"># Collect function calls from response</span>
+        fn_calls = [p.function_call <span class="kw">for</span> c <span class="kw">in</span> response.candidates
+                    <span class="kw">for</span> p <span class="kw">in</span> c.content.parts
+                    <span class="kw">if</span> hasattr(p, <span class="str">"function_call"</span>) <span class="kw">and</span> p.function_call.name]
+
+        <span class="kw">if not</span> fn_calls:  <span class="com"># Pure text — agent done</span>
+            <span class="kw">return</span> extract_text(response)
+
+        <span class="com"># Execute tools and feed results back</span>
+        <span class="kw">for</span> fn_call <span class="kw">in</span> fn_calls:
+            result = self._dispatch_tool(fn_call.name, dict(fn_call.args))
+            self._tool_calls_log.append({<span class="str">"tool"</span>: fn_call.name, <span class="str">"result"</span>: result})
+
+        current_message = build_function_response(fn_calls, results)</pre>
+</section>
+
+<!-- ============ SLIDE 20: ARCHITECTURE ============ -->
+<section class="slide" data-title="Architecture">
+  <h2 class="slide-title">System Architecture</h2>
+  <p class="slide-subtitle">8,140 lines · 4 source files · 5 domain agents</p>
+  <div class="cols-2">
+    <div>
+      <div class="card" style="margin-bottom:12px;"><h3 style="font-size:18px;">UI Layer · app.py <span style="color:var(--muted); font-size:14px;">(845 lines)</span></h3><p>Streamlit · 6 tabs · sidebar · auto-load · session state</p></div>
+      <div class="card green" style="margin-bottom:12px;"><h3 style="font-size:18px;">Domain · base_engine.py <span style="color:var(--muted); font-size:14px;">(933)</span></h3><p>5 agents · scenario engine · haversine · Folium maps</p></div>
+      <div class="card amber" style="margin-bottom:12px;"><h3 style="font-size:18px;">Solvers · compare_backends.py <span style="color:var(--muted); font-size:14px;">(5,438)</span></h3><p>8 backends · locked-prefix · OR-Tools EA · Excel export</p></div>
+      <div class="card purple"><h3 style="font-size:18px;">Agent · vrp_agent.py <span style="color:var(--muted); font-size:14px;">(960)</span></h3><p>Gemini · 8 tools · agentic loop · system prompt</p></div>
+    </div>
+    <div>
+      <h3 class="h-mint" style="margin-bottom:12px; font-size: 20px;">5 Domain Agents</h3>
+      <div class="card" style="margin-bottom:8px; padding:12px 16px;"><strong style="color:var(--blue);">IntakeAgent</strong> — input validation</div>
+      <div class="card green" style="margin-bottom:8px; padding:12px 16px;"><strong style="color:var(--mint);">PolicyAgent</strong> — weights per goal profile</div>
+      <div class="card amber" style="margin-bottom:8px; padding:12px 16px;"><strong style="color:var(--amber);">AssignmentAgent</strong> — greedy + 2-opt scoring</div>
+      <div class="card coral" style="margin-bottom:8px; padding:12px 16px;"><strong style="color:var(--coral);">ScenarioAgent</strong> — 18 mutations</div>
+      <div class="card purple" style="padding:12px 16px;"><strong style="color:var(--purple);">ExplainAgent</strong> — human-readable actions</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 21: DATA MODEL ============ -->
+<section class="slide" data-title="Data Model">
+  <h2 class="slide-title">Input Data Model</h2>
+  <p class="slide-subtitle">5 CSV files · 40,000 orders · 400 routes · 8 depots</p>
+  <table class="tbl">
+    <thead><tr><th>File</th><th>Rows</th><th>Key Columns</th></tr></thead>
+    <tbody>
+      <tr><td><code>orders_40000.csv</code></td><td>40,000</td><td>Latitude, Longitude, ServiceTime, TimeWindow, Priority, SLAFlag, AccountId</td></tr>
+      <tr><td><code>routes_400.csv</code></td><td>400</td><td>StartDepotName, EarliestStartTime, MaxOrderCount, OvertimeStartTime, TechnicianRating</td></tr>
+      <tr><td><code>depots_8.csv</code></td><td>8</td><td>Name, Latitude, Longitude</td></tr>
+      <tr><td><code>accounts.csv</code></td><td>120</td><td>AccountId, GoalProfile</td></tr>
+      <tr><td><code>goal_profiles.csv</code></td><td>4</td><td>minimize_travel_time, maximize_sla_adherence, reduce_overtime, prefer_higher_rated</td></tr>
+    </tbody>
+  </table>
+  <div class="cols-2" style="margin-top: 16px;">
+    <div class="card green"><h3>Solve scope per run</h3><p>150 orders · 20 routes · 1 depot</p></div>
+    <div class="card amber"><h3>Distance metric</h3><p>Haversine at 30 km/h (OSRM uses real roads)</p></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 22: STREAMLIT UI ============ -->
+<section class="slide" data-title="Streamlit UI">
+  <h2 class="slide-title">Streamlit UI · 6 Tabs</h2>
+  <table class="tbl">
+    <thead><tr><th>Tab</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Overview</strong></td><td>Backend run count, scenarios, dataset metrics, summary tables</td></tr>
+      <tr><td><strong>KPI Comparison</strong></td><td>6 Plotly bar charts: Assigned, Routes, Distance, Travel, Late, Runtime</td></tr>
+      <tr><td><strong>Map Explorer</strong></td><td>Interactive Folium map · per-route stops · sequence polylines · ETA popups</td></tr>
+      <tr><td><strong>Scenario Tables</strong></td><td>Per-backend × per-scenario data: Summary, Actions, Routes, Stops</td></tr>
+      <tr><td><strong>Export</strong></td><td>Multi-sheet XLSX download · 4 sheets per backend × 8 = 32 sheets</td></tr>
+      <tr class="winner-row"><td><strong>🤖 AI Agent</strong></td><td>Chat · 8 quick actions · 4 reactive event buttons · tool calls log</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ SLIDE 23: BACKENDCONFIG ============ -->
+<section class="slide" data-title="BackendConfig">
+  <h2 class="slide-title">BackendConfig — 28 Parameters</h2>
+  <p class="slide-subtitle">All exposed in the Streamlit sidebar</p>
+  <div class="cols-3">
+    <div class="card">
+      <h3>Core (9)</h3>
+      <ul>
+        <li>speed_kmph = 35.0</li>
+        <li>use_two_opt = True</li>
+        <li>strict_skill_bias = True</li>
+        <li>random_seed = 42</li>
+        <li>max_orders = 350</li>
+        <li>max_routes = 24</li>
+        <li>depot_focus = None</li>
+      </ul>
+    </div>
+    <div class="card amber">
+      <h3>Hybrid/Adaptive (14)</h3>
+      <ul>
+        <li>candidate_routes = 10</li>
+        <li>frontier_size = 28</li>
+        <li>local_search_passes = 4</li>
+        <li>max_hard_late_min = 30</li>
+        <li>route_activation = 42.0</li>
+        <li>compact_passes = 3</li>
+      </ul>
+    </div>
+    <div class="card winner">
+      <h3>OR-Tools (2)</h3>
+      <ul>
+        <li>ortools_max_runtime = 5</li>
+        <li>ortools_allow_drop = True</li>
+      </ul>
+      <p style="margin-top:12px; color:var(--muted); font-size:14px;">Plus OSRM (6), PyVRP (2), Esri (4)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 24: COMPLEXITY ============ -->
+<section class="slide" data-title="Complexity">
+  <h2 class="slide-title">Complexity Analysis</h2>
+  <table class="tbl">
+    <thead><tr><th>Backend</th><th>Assignment</th><th>Local Search</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td>Greedy</td><td>O(N × R)</td><td>O(R × M²) per pass</td><td>O(NR + RM²)</td></tr>
+      <tr><td>OSRM</td><td>O(N × R × HTTP)</td><td>O(RM² × HTTP)</td><td>O((NR + RM²) × HTTP)</td></tr>
+      <tr><td>PyVRP</td><td>O(N²) per gen</td><td>C++ moves</td><td>O(G × N²)</td></tr>
+      <tr><td>OR-Tools</td><td>O(N × R)</td><td>O(t × N × R)</td><td>O(t × N × R)</td></tr>
+      <tr class="winner-row"><td><strong>OR-Tools EA</strong></td><td>O(K × R)</td><td>O(t × K × R)</td><td><strong>O(t × K × R), K ≪ N</strong></td></tr>
+      <tr><td>Hybrid</td><td>O(N × R × frontier)</td><td>O(NR × passes)</td><td>O(NR × passes)</td></tr>
+      <tr><td>Adaptive</td><td>K_restarts × Hybrid</td><td>K × Hybrid</td><td>K × O(NR × passes)</td></tr>
+    </tbody>
+  </table>
+  <div class="pullquote" style="margin-top: 20px;">
+    OR-Tools EA submits <em>K = ~10</em> open orders instead of <em>N = 150</em>. Model is 10-15× smaller.
+  </div>
+</section>
+
+<!-- ============ SLIDE 25: DEPLOYMENT ============ -->
+<section class="slide" data-title="Deployment">
+  <h2 class="slide-title">Deployment Path</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h4>Local dev</h4><p>Run benchmarks · save artifacts</p></div>
+    <div class="step"><div class="step-num">2</div><h4>Docker build</h4><p>HF Spaces base image</p></div>
+    <div class="step"><div class="step-num">3</div><h4>Push to HF</h4><p>git lfs for 7MB CSV</p></div>
+    <div class="step"><div class="step-num">4</div><h4>Set secrets</h4><p>GOOGLE_API_KEY in Settings</p></div>
+    <div class="step"><div class="step-num">5</div><h4>Live</h4><p>Public HTTPS endpoint</p></div>
+  </div>
+  <pre class="code"><span class="kw">FROM</span> python:3.11-slim
+<span class="kw">RUN</span> apt-get update && apt-get install -y --no-install-recommends build-essential
+<span class="kw">RUN</span> useradd -m -u <span class="num">1000</span> user
+<span class="kw">USER</span> user
+<span class="kw">WORKDIR</span> /home/user/app
+<span class="kw">COPY</span> --chown=user requirements.txt .
+<span class="kw">RUN</span> pip install --no-cache-dir -r requirements.txt
+<span class="kw">COPY</span> --chown=user . .
+<span class="kw">EXPOSE</span> <span class="num">7860</span>
+<span class="kw">CMD</span> [<span class="str">"streamlit"</span>, <span class="str">"run"</span>, <span class="str">"app.py"</span>, <span class="str">"--server.port=7860"</span>, <span class="str">"--server.address=0.0.0.0"</span>]</pre>
+</section>
+
+<!-- ============ SLIDE 26: AUTO-LOAD ============ -->
+<section class="slide" data-title="Auto-load">
+  <h2 class="slide-title">Zero-Friction Demo Loading</h2>
+  <p class="slide-subtitle">App auto-discovers data and pre-computed artifacts on startup</p>
+  <div class="cols-2">
+    <pre class="code" style="margin:0;"><span class="com"># Auto-discovery candidates</span>
+LOCAL_DATA = [
+  os.getenv(<span class="str">"VRP_SYNTHETIC_DATA_DIR"</span>, <span class="str">""</span>),
+  Path(__file__).parent / <span class="str">"data"</span>,
+  Path(__file__).parent / <span class="str">"synthetic_data"</span>,
+]
+
+LOCAL_ARTIFACTS = [
+  os.getenv(<span class="str">"VRP_NOTEBOOK_ARTIFACTS_DIR"</span>, <span class="str">""</span>),
+  Path(__file__).parent / <span class="str">"artifacts"</span>,
+]</pre>
+    <div class="card winner">
+      <h3>What the user sees</h3>
+      <ul>
+        <li>Open the app → CSVs load automatically</li>
+        <li>Backend list shows <span class="h-mint">"✓ found"</span> for each</li>
+        <li>Default radio = "Load saved workbook"</li>
+        <li>Click <strong>Build comparison</strong> → instant results</li>
+        <li>No upload required for demo</li>
+        <li>Live solves available with one click</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 27: DEMO VIDEO ============ -->
+<section class="slide" data-title="Demo Video">
+  <h2 class="slide-title">🎥 Demo Video</h2>
+  <p class="slide-subtitle">Full walkthrough: all 6 tabs · AI Agent live · benchmark exploration</p>
+  <div class="demo-launcher">
+    <a href="https://youtu.be/FqVuVjW20yo" target="_blank" rel="noopener" class="demo-card video-card">
+      <div class="demo-icon video-icon">▶</div>
+      <div class="demo-text">
+        <div class="demo-label" style="color:var(--coral);">CLICK TO PLAY ON YOUTUBE</div>
+        <div class="demo-title">Execution-Aware Agentic VRP — Demo Walkthrough</div>
+        <div class="demo-url">youtu.be/FqVuVjW20yo</div>
+        <div class="demo-cta" style="background:linear-gradient(135deg, var(--coral), var(--amber));">Watch Demo Video in New Tab →</div>
+      </div>
+    </a>
+    <div class="demo-features">
+      <div class="demo-feat"><div class="feat-num">6</div><div class="feat-lbl">UI Tabs covered</div></div>
+      <div class="demo-feat"><div class="feat-num">🤖</div><div class="feat-lbl">Agent in action</div></div>
+      <div class="demo-feat"><div class="feat-num">📊</div><div class="feat-lbl">Benchmark runs</div></div>
+      <div class="demo-feat"><div class="feat-num">🗺️</div><div class="feat-lbl">Map exploration</div></div>
+    </div>
+  </div>
+  <p style="text-align:center; color:var(--muted); font-size:13px; margin-top:12px;">
+    YouTube embeds blocked offline — click to open the video in YouTube
+  </p>
+</section>
+
+<!-- ============ SLIDE 28: KEY DECISIONS ============ -->
+<section class="slide" data-title="Key Decisions">
+  <h2 class="slide-title">Key Design Decisions</h2>
+  <table class="tbl">
+    <thead><tr><th>Decision</th><th>Alternative</th><th>Why this</th></tr></thead>
+    <tbody>
+      <tr><td>Gemini 2.0 Flash</td><td>Claude Sonnet, GPT-4o</td><td>Free 1500/day, no card, strong function-calling</td></tr>
+      <tr class="winner-row"><td><strong>Split-solve for OR-Tools EA</strong></td><td>Pin locked stops in model</td><td>Naïve pinning makes PATH_CHEAPEST_ARC infeasible</td></tr>
+      <tr><td>Greedy fallback</td><td>Reject any-drop solutions</td><td>Guarantees 100% assignment, rarely triggers</td></tr>
+      <tr><td>Locked-prefix mechanism</td><td>Full re-solve per scenario</td><td>Preserves in-progress work, 11% faster</td></tr>
+      <tr><td>Haversine distance</td><td>OSRM for all backends</td><td>Public OSRM rate-limited; haversine is consistent</td></tr>
+      <tr><td>ortools_allow_drop = True</td><td>Hard-assign all orders</td><td>Disjunction prizes improve quality</td></tr>
+      <tr><td>18 fixed scenarios</td><td>User-defined mutations</td><td>Reproducible benchmarks, fair compare</td></tr>
+      <tr><td>Streamlit (not Gradio)</td><td>Gradio, Dash</td><td>Best multi-tab UX, native dataframe rendering</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ SLIDE 29: ROADMAP ============ -->
+<section class="slide" data-title="Roadmap">
+  <h2 class="slide-title">Roadmap</h2>
+  <div class="cols-2">
+    <div class="card winner">
+      <h3>Near-term</h3>
+      <ul>
+        <li>CI/CD with benchmark regression</li>
+        <li>Persist OSRM cache to disk</li>
+        <li>Multi-depot solving support</li>
+        <li>SLA breach prediction model</li>
+        <li>OpenAPI spec for headless solves</li>
+        <li>Real-time technician GPS feed</li>
+      </ul>
+    </div>
+    <div class="card amber">
+      <h3>Long-term</h3>
+      <ul>
+        <li>Anthropic Claude as alternative agent</li>
+        <li>Kubernetes deployment manifest</li>
+        <li>A/B testing for cost variants</li>
+        <li>Production load + concurrency tests</li>
+        <li>Async backend execution</li>
+        <li>Per-customer custom scenarios</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pullquote" style="margin-top: 20px;">
+    From <em>solving a routing problem</em> to <em>shipping an autonomous, execution-aware platform</em>.
+  </div>
+</section>
+
+<!-- ============ SLIDE 30: FINAL ============ -->
+<section class="slide" data-title="Final Thought">
+  <h2 class="slide-title">Final Thought</h2>
+  <div class="pullquote" style="font-size: 26px; line-height: 1.5;">
+    The real value is not only the OR-Tools EA winner backend.<br><br>
+    It's the <em>comparative benchmark scaffolding</em>, the <em>locked-prefix mechanism</em>, and the <em>agentic AI layer</em> that together make the system operationally trustworthy.
+  </div>
+  <div class="stats-row" style="margin-top: 32px;">
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Assignment</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-label">Violations</span></div>
+    <div class="stat"><span class="stat-num">770s</span><span class="stat-label">Runtime</span></div>
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Solvers</span></div>
+    <div class="stat"><span class="stat-num">18</span><span class="stat-label">Scenarios</span></div>
+    <div class="stat"><span class="stat-num">1</span><span class="stat-label">AI Agent</span></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 31: THANK YOU ============ -->
+<section class="slide title-slide" data-title="Thank You">
+  <h1 style="font-size: 96px;">Thank you</h1>
+  <div class="subtitle">Questions? Find everything here:</div>
+  <div class="cols-2" style="width: 80%; max-width: 800px; gap: 20px;">
+    <a href="https://github.com/dranubhaparashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio" target="_blank" style="text-decoration: none;">
+      <div class="card" style="text-align: left;">
+        <h3>📦 Source Code</h3>
+        <p style="font-family: monospace; font-size: 13px; word-break: break-all;">github.com/dranubhaparashar/<br>Execution-Aware-Agentic-VRP...</p>
+      </div>
+    </a>
+    <a href="https://huggingface.co/spaces/AnubhaParashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio" target="_blank" style="text-decoration: none;">
+      <div class="card winner" style="text-align: left;">
+        <h3>🚀 Live App</h3>
+        <p style="font-family: monospace; font-size: 13px; word-break: break-all;">huggingface.co/spaces/AnubhaParashar/<br>Execution-Aware-Agentic-VRP...</p>
+      </div>
+    </a>
+    <a href="https://youtu.be/FqVuVjW20yo" target="_blank" style="text-decoration: none;">
+      <div class="card amber" style="text-align: left;">
+        <h3>🎥 Demo Video</h3>
+        <p style="font-family: monospace; font-size: 13px;">youtu.be/FqVuVjW20yo</p>
+      </div>
+    </a>
+    <a href="https://github.com/dranubhaparashar/Execution-Aware-Agentic-VRP-Solver-and-Benchmark-Studio/wiki" target="_blank" style="text-decoration: none;">
+      <div class="card purple" style="text-align: left;">
+        <h3>📚 Wiki Docs</h3>
+        <p style="font-size: 14px;">Architecture · Algorithm Comparison · Function Reference</p>
+      </div>
+    </a>
+  </div>
+  <div class="author" style="margin-top: 32px;">
+    Built with ❤️ by Anubha Parashar · MIT licensed · April 2026
+  </div>
+</section>
+
+</div>
+
+<!-- Footer with progress bar + nav -->
+<div class="deck-footer">
+  <div class="deck-progress" id="progress"></div>
+  <button class="nav-btn" id="prev" onclick="goPrev()">‹ Prev</button>
+  <div class="deck-title" id="slideTitle"></div>
+  <div class="deck-counter" id="counter"></div>
+  <button class="nav-btn" id="next" onclick="goNext()">Next ›</button>
+</div>
+
+<div class="hint" id="hint">Use ← / → arrow keys, or click Next/Prev</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let current = parseInt(location.hash.slice(1)) || 0;
+if (current >= slides.length) current = 0;
+
+function show(idx) {
+  slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+  current = idx;
+  location.hash = idx;
+
+  const titleEl = document.getElementById('slideTitle');
+  const counterEl = document.getElementById('counter');
+  const progressEl = document.getElementById('progress');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+
+  titleEl.textContent = slides[idx].dataset.title || '';
+  counterEl.textContent = `${idx + 1} / ${slides.length}`;
+  progressEl.style.width = `${((idx + 1) / slides.length) * 100}%`;
+  prevBtn.disabled = idx === 0;
+  nextBtn.disabled = idx === slides.length - 1;
+}
+
+function goPrev() { if (current > 0) show(current - 1); }
+function goNext() { if (current < slides.length - 1) show(current + 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goPrev(); }
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); goNext(); }
+  if (e.key === 'Home') { e.preventDefault(); show(0); }
+  if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  if (e.key === 'f' || e.key === 'F') document.documentElement.requestFullscreen();
+});
+
+window.addEventListener('hashchange', () => {
+  const idx = parseInt(location.hash.slice(1)) || 0;
+  if (idx !== current) show(idx);
+});
+
+// Show hint briefly on load
+const hint = document.getElementById('hint');
+hint.classList.add('show');
+setTimeout(() => hint.classList.remove('show'), 4000);
+
+show(current);
+</script>
+</body>
+</html>
