@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VRP User Story · Hub</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0E1B2C; --bg-mid: #1A2F4A; --bg-card: #233D5C;
+  --green: #3FA88A; --mint: #7AC4A1; --blue: #5BA4E6;
+  --amber: #E6B85B; --coral: #E68B6E; --purple: #9B89E6;
+  --pink: #C57FB6; --text: #E8EFF7; --muted: #8FA9C7;
+}
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 16px; line-height: 1.6; min-height: 100vh;
+}
+body::before, body::after {
+  content: ""; position: fixed; border-radius: 50%;
+  filter: blur(140px); opacity: 0.15; pointer-events: none; z-index: 0;
+}
+body::before { width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--mint), transparent 70%);
+  top: -150px; left: -200px; }
+body::after { width: 700px; height: 700px;
+  background: radial-gradient(circle, var(--blue), transparent 70%);
+  bottom: -200px; right: -200px; }
+
+.container { position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto; padding: 40px; }
+
+/* Notion-style breadcrumb */
+.breadcrumb { font-size: 14px; color: var(--muted); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--blue); text-decoration: none; padding: 4px 10px;
+  border-radius: 6px; transition: background 0.2s; }
+.breadcrumb a:hover { background: var(--bg-mid); color: var(--mint); }
+.breadcrumb-sep { color: var(--muted); }
+
+/* Hero on hub index */
+.hub-hero { padding: 40px 0 32px; border-bottom: 1px solid var(--bg-mid); margin-bottom: 32px; }
+.hub-icon { font-size: 56px; margin-bottom: 16px; }
+.hub-hero h1 { font-size: 44px; font-weight: 800; letter-spacing: -1px;
+  background: linear-gradient(90deg, var(--blue), var(--mint), var(--amber));
+  background-size: 200% auto; -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; }
+.hub-hero p { font-size: 18px; color: var(--muted); max-width: 700px; }
+
+/* Scenario page header */
+.scenario-header { padding: 24px 0 32px; border-bottom: 1px solid var(--bg-mid); margin-bottom: 32px; }
+.scenario-header .scenario-emoji { font-size: 64px; margin-bottom: 12px; }
+.scenario-header h1 { font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+.scenario-header .scenario-key { display: inline-block; background: var(--bg-card);
+  color: var(--blue); padding: 4px 12px; border-radius: 6px;
+  font-family: "SF Mono", Consolas, monospace; font-size: 13px;
+  border: 1px solid var(--bg-mid); }
+.scenario-header .scenario-summary { font-size: 18px; color: var(--muted);
+  font-style: italic; margin-top: 12px; }
+
+/* Section heading */
+h2 { font-size: 20px; font-weight: 700; margin: 32px 0 16px; color: var(--text);
+  display: flex; align-items: center; gap: 10px; }
+h2::before { content: ""; width: 4px; height: 22px; background: var(--blue); border-radius: 2px; }
+
+/* Setup callout */
+.callout { background: rgba(35, 61, 92, 0.6); border-left: 4px solid var(--amber);
+  padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 16px 0; }
+.callout-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  color: var(--amber); text-transform: uppercase; margin-bottom: 8px; }
+.callout-body { font-size: 16px; color: var(--text); font-style: italic; }
+
+/* Scenario list (on hub index) */
+.scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+.scenario-card { display: flex; align-items: center; gap: 16px; padding: 18px;
+  background: rgba(35, 61, 92, 0.6); border: 1px solid var(--bg-mid);
+  border-radius: 12px; text-decoration: none; color: var(--text);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+.scenario-card:hover { transform: translateY(-2px); border-color: var(--mint);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); }
+.scenario-card .num { width: 36px; height: 36px; border-radius: 8px;
+  background: var(--bg-mid); color: var(--blue); display: flex;
+  align-items: center; justify-content: center; font-weight: 700;
+  font-family: "SF Mono", monospace; flex-shrink: 0; }
+.scenario-card .info { flex: 1; min-width: 0; }
+.scenario-card .info .key { font-size: 12px; color: var(--muted);
+  font-family: "SF Mono", monospace; font-weight: 600; }
+.scenario-card .info .ttl { font-size: 14px; font-weight: 600;
+  color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scenario-card .emoji { font-size: 24px; }
+
+/* Featured map (winner) */
+.featured-map { background: rgba(35, 61, 92, 0.5); border-radius: 14px;
+  padding: 16px; border: 1px solid var(--bg-mid); margin-bottom: 24px; }
+.featured-map .winner-bar { display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px; flex-wrap: wrap; gap: 12px; }
+.winner-pill { display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, rgba(63, 168, 138, 0.3), rgba(122, 196, 161, 0.2));
+  border: 1px solid var(--mint); color: var(--mint); padding: 6px 14px;
+  border-radius: 20px; font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; }
+.featured-map img, .featured-map svg { width: 100%; max-width: 800px; display: block;
+  margin: 0 auto; border-radius: 8px; }
+
+/* Backend gallery (small thumbnails) */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+.gallery-tile { background: rgba(35, 61, 92, 0.5); border-radius: 10px;
+  padding: 10px; border: 1px solid var(--bg-mid); transition: border-color 0.2s; cursor: pointer; }
+.gallery-tile:hover { border-color: var(--blue); }
+.gallery-tile.is-winner { border-color: var(--mint);
+  background: linear-gradient(135deg, rgba(35, 61, 92, 0.6), rgba(63, 168, 138, 0.1)); }
+.gallery-tile-header { display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 6px; }
+.gallery-tile-name { font-size: 13px; font-weight: 700; color: var(--text); }
+.gallery-tile-stats { font-size: 11px; color: var(--muted); margin-bottom: 6px;
+  font-family: "SF Mono", monospace; }
+.gallery-tile-stats .late { color: var(--coral); }
+.gallery-tile img, .gallery-tile svg { width: 100%; display: block; border-radius: 4px; }
+
+/* Data table */
+table { width: 100%; border-collapse: collapse; background: var(--bg-card);
+  border-radius: 10px; overflow: hidden; font-size: 14px; margin: 12px 0; }
+th { background: var(--bg-mid); color: var(--blue); padding: 12px 16px;
+  text-align: left; font-weight: 700; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+td { padding: 12px 16px; border-top: 1px solid rgba(143, 169, 199, 0.08); }
+tr.winner-row td { background: rgba(63, 168, 138, 0.15); color: var(--mint); font-weight: 600; }
+.late-cell { color: var(--coral); font-weight: 600; }
+
+/* Three reason cards */
+.reason-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 16px 0; }
+.reason { background: rgba(35, 61, 92, 0.5); border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0; padding: 18px; }
+.reason.why { border-left-color: var(--amber); }
+.reason.what { border-left-color: var(--blue); }
+.reason.how { border-left-color: var(--mint); }
+.reason h3 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.reason.why h3 { color: var(--amber); }
+.reason.what h3 { color: var(--blue); }
+.reason.how h3 { color: var(--mint); }
+.reason p { font-size: 14px; color: var(--text); }
+
+/* Pagination at bottom of scenario pages */
+.pagination { display: flex; justify-content: space-between; gap: 16px;
+  margin: 48px 0 32px; padding-top: 24px; border-top: 1px solid var(--bg-mid); }
+.page-link { flex: 1; display: block; background: rgba(35, 61, 92, 0.6);
+  border: 1px solid var(--bg-mid); border-radius: 12px; padding: 16px 20px;
+  text-decoration: none; color: var(--text); transition: all 0.2s; max-width: 48%; }
+.page-link:hover { border-color: var(--mint); background: rgba(35, 61, 92, 0.8); }
+.page-link-arrow { font-size: 11px; color: var(--muted);
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+.page-link.next { text-align: right; margin-left: auto; }
+.page-link-key { font-family: "SF Mono", monospace; color: var(--blue);
+  font-size: 13px; margin-bottom: 2px; }
+.page-link-ttl { font-size: 14px; font-weight: 600; color: var(--text); }
+
+/* Hub stats */
+.hub-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0 32px; }
+.hub-stat { background: rgba(35, 61, 92, 0.6); border: 1px solid var(--bg-mid);
+  border-radius: 12px; padding: 20px; text-align: center; }
+.hub-stat-num { font-size: 36px; font-weight: 800; color: var(--mint);
+  line-height: 1; margin-bottom: 6px; }
+.hub-stat-lbl { font-size: 12px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 1.5px; }
+
+/* Responsive */
+@media (max-width: 800px) {
+  .scenario-grid { grid-template-columns: 1fr 1fr; }
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .reason-cards { grid-template-columns: 1fr; }
+  .hub-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="index.html">📚 VRP User Story Hub</a>
+  </div>
+
+  <div class="hub-hero">
+    <div class="hub-icon">📊</div>
+    <h1>VRP User Story Hub</h1>
+    <p>A real day at a Dallas-area dispatch center. 20 technicians out of Depot Richardson handling 150 orders.
+       18 things go sideways across the day. 8 algorithms try to handle them.
+       Click any scenario to see what happened.</p>
+  </div>
+
+  <div class="hub-stats">
+    <div class="hub-stat"><div class="hub-stat-num">18</div><div class="hub-stat-lbl">Scenarios</div></div>
+    <div class="hub-stat"><div class="hub-stat-num">8</div><div class="hub-stat-lbl">Backends</div></div>
+    <div class="hub-stat"><div class="hub-stat-num">144</div><div class="hub-stat-lbl">Maps</div></div>
+    <div class="hub-stat"><div class="hub-stat-num">150</div><div class="hub-stat-lbl">Orders/run</div></div>
+  </div>
+
+  <h2>📂 All Scenarios</h2>
+  <div class="scenario-grid">
+
+        <a href="BASE.html" class="scenario-card">
+          <span class="num">01</span>
+          <div class="info">
+            <div class="key">BASE</div>
+            <div class="ttl">The Starting Line</div>
+          </div>
+          <span class="emoji">🎬</span>
+        </a>
+        <a href="EAS_1.html" class="scenario-card">
+          <span class="num">02</span>
+          <div class="info">
+            <div class="key">EAS_1</div>
+            <div class="ttl">TimeWindow Shifted +60 min</div>
+          </div>
+          <span class="emoji">⏰</span>
+        </a>
+        <a href="EAS_2.html" class="scenario-card">
+          <span class="num">03</span>
+          <div class="info">
+            <div class="key">EAS_2</div>
+            <div class="ttl">ServiceTime Extended +40 min</div>
+          </div>
+          <span class="emoji">🔧</span>
+        </a>
+        <a href="EAS_3.html" class="scenario-card">
+          <span class="num">04</span>
+          <div class="info">
+            <div class="key">EAS_3</div>
+            <div class="ttl">PreferredDepot Changed</div>
+          </div>
+          <span class="emoji">🏢</span>
+        </a>
+        <a href="EAS_4.html" class="scenario-card">
+          <span class="num">05</span>
+          <div class="info">
+            <div class="key">EAS_4</div>
+            <div class="ttl">Downstream Cascade</div>
+          </div>
+          <span class="emoji">🌊</span>
+        </a>
+        <a href="RT_1.html" class="scenario-card">
+          <span class="num">06</span>
+          <div class="info">
+            <div class="key">RT_1</div>
+            <div class="ttl">Urgent Order Injected</div>
+          </div>
+          <span class="emoji">🚨</span>
+        </a>
+        <a href="RT_2.html" class="scenario-card">
+          <span class="num">07</span>
+          <div class="info">
+            <div class="key">RT_2</div>
+            <div class="ttl">Customer Cancellation</div>
+          </div>
+          <span class="emoji">❌</span>
+        </a>
+        <a href="RT_3.html" class="scenario-card">
+          <span class="num">08</span>
+          <div class="info">
+            <div class="key">RT_3</div>
+            <div class="ttl">ServiceTime ×1.35</div>
+          </div>
+          <span class="emoji">⏳</span>
+        </a>
+        <a href="RT_4.html" class="scenario-card">
+          <span class="num">09</span>
+          <div class="info">
+            <div class="key">RT_4</div>
+            <div class="ttl">Shift Delay +90 min</div>
+          </div>
+          <span class="emoji">🚛</span>
+        </a>
+        <a href="RT_5.html" class="scenario-card">
+          <span class="num">10</span>
+          <div class="info">
+            <div class="key">RT_5</div>
+            <div class="ttl">Window Shrunk</div>
+          </div>
+          <span class="emoji">📏</span>
+        </a>
+        <a href="RT_6.html" class="scenario-card">
+          <span class="num">11</span>
+          <div class="info">
+            <div class="key">RT_6</div>
+            <div class="ttl">Technician Sick</div>
+          </div>
+          <span class="emoji">🤒</span>
+        </a>
+        <a href="RT_7.html" class="scenario-card">
+          <span class="num">12</span>
+          <div class="info">
+            <div class="key">RT_7</div>
+            <div class="ttl">Combined Real-Time Disruption</div>
+          </div>
+          <span class="emoji">🌪️</span>
+        </a>
+        <a href="GB_1.html" class="scenario-card">
+          <span class="num">13</span>
+          <div class="info">
+            <div class="key">GB_1</div>
+            <div class="ttl">Goal: Minimize Travel Time</div>
+          </div>
+          <span class="emoji">🛣️</span>
+        </a>
+        <a href="GB_2.html" class="scenario-card">
+          <span class="num">14</span>
+          <div class="info">
+            <div class="key">GB_2</div>
+            <div class="ttl">Goal: Prefer Higher-Rated Technicians</div>
+          </div>
+          <span class="emoji">⭐</span>
+        </a>
+        <a href="GB_3.html" class="scenario-card">
+          <span class="num">15</span>
+          <div class="info">
+            <div class="key">GB_3</div>
+            <div class="ttl">Goal: Prefer Specialty Match</div>
+          </div>
+          <span class="emoji">🎯</span>
+        </a>
+        <a href="GB_4.html" class="scenario-card">
+          <span class="num">16</span>
+          <div class="info">
+            <div class="key">GB_4</div>
+            <div class="ttl">Goal: Maximize SLA Adherence</div>
+          </div>
+          <span class="emoji">📋</span>
+        </a>
+        <a href="GB_5.html" class="scenario-card">
+          <span class="num">17</span>
+          <div class="info">
+            <div class="key">GB_5</div>
+            <div class="ttl">Goal: Reduce Overtime</div>
+          </div>
+          <span class="emoji">🏠</span>
+        </a>
+        <a href="GB_6.html" class="scenario-card">
+          <span class="num">18</span>
+          <div class="info">
+            <div class="key">GB_6</div>
+            <div class="ttl">Goal: Customer-Weighted Profile</div>
+          </div>
+          <span class="emoji">💎</span>
+        </a>
+  </div>
+
+  <h2>🏗️ How the matrix works</h2>
+  <p style="color: var(--muted); max-width: 800px; margin-bottom: 24px;">
+    Each scenario applies one (or several) mutations to a baseline of 150 orders
+    routed to 20 technicians. All 8 backends solve the same input. We compare the
+    resulting routes for assignment rate, distance, late minutes, overtime, and runtime.
+  </p>
+
+  <div style="background: rgba(35, 61, 92, 0.5); border: 1px solid var(--bg-mid);
+              border-radius: 12px; padding: 20px; margin: 24px 0;">
+    <h3 style="font-size: 13px; color: var(--blue); letter-spacing: 1.5px;
+               text-transform: uppercase; margin-bottom: 12px;">Scenario Categories</h3>
+    <p style="margin-bottom: 8px;">
+      <span style="color: var(--green); font-weight: 600;">BASE</span>
+      &nbsp;·&nbsp; the baseline solve. No mutations. Used as the starting point for every other scenario.
+    </p>
+    <p style="margin-bottom: 8px;">
+      <span style="color: var(--amber); font-weight: 600;">EAS · 4 scenarios</span>
+      &nbsp;·&nbsp; Execution-Aware Scheduling. Customer-side changes: time windows, service times, depot preferences.
+    </p>
+    <p style="margin-bottom: 8px;">
+      <span style="color: var(--coral); font-weight: 600;">RT · 7 scenarios</span>
+      &nbsp;·&nbsp; Real-Time disruptions. Operations chaos: sick techs, urgent orders, cancellations, shift delays.
+    </p>
+    <p>
+      <span style="color: var(--purple); font-weight: 600;">GB · 6 scenarios</span>
+      &nbsp;·&nbsp; Goal-Based optimization. Goal weight overrides for travel, SLA, overtime, customer priority.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
